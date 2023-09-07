@@ -1,16 +1,16 @@
 options:
   platform: psx
-  basename: ovl_cr
+  basename: ovlcr
   base_path: ../../..
   build_path: build/
   target_path: disk/medievil/OVERLAYS/CR.BIN
-  asm_path: asm/overlays/cr
-  asset_path: assets/overlays/cr
-  src_path: src/overlays/cr
+  asm_path: asm/ovlcr
+  asset_path: assets/ovlcr
+  src_path: src/ovlcr
   compiler: GCC
-  symbol_addrs_path: config/symbols.ovl_cr.txt
-  undefined_funcs_auto_path: config/undefined_funcs_auto.ovl_cr.txt
-  undefined_syms_auto_path: config/undefined_syms_auto.ovl_cr.txt
+  symbol_addrs_path: config/symbols.ovlcr.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlcr.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlcr.txt
   find_file_boundaries: yes
   use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
@@ -26,7 +26,7 @@ options:
   data_string_guesser_level: 2
 
 segments:
-  - name: ovl_cr
+  - name: ovlcr
     type: code
     start: 0x00000000
     vram: 0x80010000
