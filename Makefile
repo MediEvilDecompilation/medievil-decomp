@@ -83,7 +83,7 @@ check:
 	sha1sum --check config/medievil.check.sha
 
 extract: extract_ovlcr
-extract_ovlcr:
+extract_ovl%:
 	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.ovlcr.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.ovlcr.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
 

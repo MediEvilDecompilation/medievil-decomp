@@ -1,7 +1,7 @@
 options:
   platform: psx
   basename: ovlcr
-  base_path: ../../..
+  base_path: ..
   build_path: build/
   target_path: disk/medievil/OVERLAYS/CR.BIN
   asm_path: asm/ovlcr
