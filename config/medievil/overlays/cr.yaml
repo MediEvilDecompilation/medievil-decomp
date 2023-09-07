@@ -1,56 +1,36 @@
 options:
-  basename: ovl_cr
-  target_path: disk/medievil/OVERLAYS/CR.BIN
-  base_path: ../../..
   platform: psx
-  compiler: GCC
-
+  basename: cr
+  base_path: ../../..
+  build_path: build/medievil/
+  target_path: disk/medievil/OVERLAYS/CR.BIN
   asm_path: asm/medievil/overlays/cr
+  asset_path: assets/cr
   src_path: src/medievil/overlays/cr
-  build_path: build/medievil/overlays/cr
-  # create_asm_dependencies: True
-
-  #ld_script_path: disk/medievil/CR.BIN.ld
-
+  compiler: GCC
+  symbol_addrs_path: config/symbols.cr.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.cr.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.cr.txt
   find_file_boundaries: yes
-  gp_value: 0x00000000
-
   use_legacy_include_asm: no
-
-  asm_function_macro: glabel
+  migrate_rodata_to_functions: yes
   asm_jtbl_label_macro: jlabel
-  asm_data_macro: dlabel
-
   section_order:
     - ".rodata"
     - ".text"
     - ".data"
-  # auto_all_sections: [".data", ".rodata", ".bss"]
 
-  symbol_addrs_path: config/medievil/symbols/symbols.ovl_cr.txt
-  undefined_funcs_auto_path: config/medievil/symbols/undefined_funcs_auto.ovl_cr.txt
-  undefined_syms_auto_path: config/medievil/symbols/undefined_syms_auto.ovl_cr.txt
-  reloc_addrs_path: reloc_addrs.txt
-
-  extensions_path: tools/splat_ext
-
-  subalign: 2
-
-  string_encoding: ASCII
-  data_string_encoding: ASCII
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-  # from sotn-decomp
-  use_legacy_include_asm: no
-  migrate_rodata_to_functions: no
-segments:
-  - name: ovl_cr
+  segments:
+  - name: cr
     type: code
     start: 0x00000000
     vram: 0x80010000
+    subalign: 2
     subsegments:
       - [0x0, rodata]
       - [0x18, c]
       - [0x940, data]
-  - [0x1CB4]
+  - [0x1CB4]              
