@@ -5,10 +5,10 @@ MediEvil 1 and 2 decomp monorepository for US PSX retail version.
 https://discord.gg/pBU8mD3k8z
 
 ## Progress
-TBA
+TBA 
 
 ## Setup
-TBA
+TBA - Being added to the Wiki for a full guide but basic guide will be written here.
 
 ## How To
 TBA...
