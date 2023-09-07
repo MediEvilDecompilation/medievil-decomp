@@ -1,16 +1,16 @@
 options:
   basename: ovl_cr
-  target_path: CR.BIN
+  target_path: disk/medievil/OVERLAYS/CR.BIN
   base_path: ../../..
   platform: psx
   compiler: GCC
 
-  asm_path: asm/medievil
-  src_path: src/medievil/main
-  build_path: build/medievil
+  asm_path: asm/medievil/overlays/cr
+  src_path: src/medievil/overlays/cr
+  build_path: build/medievil/overlays/cr
   # create_asm_dependencies: True
 
-  ld_script_path: disk/medievil/CR.BIN.ld
+  #ld_script_path: disk/medievil/CR.BIN.ld
 
   find_file_boundaries: yes
   gp_value: 0x00000000
@@ -28,9 +28,9 @@ options:
     - ".data"
   # auto_all_sections: [".data", ".rodata", ".bss"]
 
-  symbol_addrs_path: config/medievil/symbols.us.txt
-  undefined_funcs_auto_path: config/medievil/undefined_funcs_auto.us.main.txt
-  undefined_syms_auto_path: config/medievil/undefined_syms_auto.us.main.txt
+  symbol_addrs_path: config/medievil/symbols/symbols.ovl_cr.txt
+  undefined_funcs_auto_path: config/medievil/symbols/undefined_funcs_auto.ovl_cr.txt
+  undefined_syms_auto_path: config/medievil/symbols/undefined_syms_auto.ovl_cr.txt
   reloc_addrs_path: reloc_addrs.txt
 
   extensions_path: tools/splat_ext
