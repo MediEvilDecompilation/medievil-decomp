@@ -49,7 +49,14 @@ def apply_stage(config, name):
 
 
 def apply(config, args):
-    
+    name = args.overlay or 'dra'
+    if name.startswith("st/"):
+        apply_stage(config, name[3:])
+    elif name.startswith("tt_"):
+        apply_servant(config, name)
+    elif name is "dra" or name is "main":
+        apply_base(config, name)
+    else:
         apply_bin(config, name)
 
     config["arch"] = "mipsel"
