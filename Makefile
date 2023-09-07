@@ -5,7 +5,7 @@
 OVL_CR          := cr
 
 # Compilers
-CC1PSX          := wine ./bin/CC1PSX.EXE#./bin/cc1-psx-26
+CC1PSX          := ./bin/cc1-psx-26
 CROSS           := mipsel-linux-gnu-
 AS              := $(CROSS)as
 CC              := $(CC1PSX)
@@ -39,10 +39,14 @@ M2C_DIR         := $(TOOLS_DIR)/m2c
 M2C_APP         := $(M2C_DIR)/m2c.py
 M2C             := $(PYTHON) $(M2C_APP)
 M2C_ARGS        := -P 4
+MASPSX_DIR      := $(TOOLS_DIR)/maspsx
+MASPSX_APP      := $(MASPSX_DIR)/maspsx.py
+MASPSX          := $(PYTHON) $(MASPSX_APP) --no-macro-inc --expand-div
 
 define list_src_files
 	$(foreach dir,$(ASM_DIR)/$(1),$(wildcard $(dir)/**.s))
 	$(foreach dir,$(ASM_DIR)/$(1)/data,$(wildcard $(dir)/**.s))
+	$(foreach dir,$(SRC_DIR)/$(1),$(wildcard $(dir)/**.c))
 
 endef
 
@@ -81,9 +85,9 @@ $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 	
 $(BUILD_DIR)/%.s.o: %.s
 	$(AS) $(AS_FLAGS) -o $@ $<
-$(BUILD_DIR)/%.c.o: %.c $(CC1PSX)
+$(BUILD_DIR)/%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
 #	$(CROSS)gcc -c -nostartfiles -nodefaultlibs -ggdb -gdwarf-4 $(CPP_FLAGS) $(CC_FLAGS) $(LD_FLAGS) $< -o $@
-	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(AS) $(AS_FLAGS) -o $@
+	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(MASPSX) | $(AS) $(AS_FLAGS) -o $@
 
 check:
 	sha1sum --check config/medievil.check.sha
