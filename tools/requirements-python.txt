@@ -1,0 +1,2 @@
+spimdisasm==1.16.0
+rabbitizer==1.7.0
