@@ -22,5 +22,5 @@ Note, for legal reasons, please do NOT commit copyrighted content (source code, 
 ## Useful Links
 TBA
 
-## Etc
+## Etc.
 TBA
