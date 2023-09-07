@@ -1,2 +1,2 @@
-spimdisasm==1.16.0
+spimdisasm==1.17.0
 rabbitizer==1.7.0
