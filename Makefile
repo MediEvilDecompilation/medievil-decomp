@@ -69,12 +69,15 @@ clean:
 all: build check
 build: cr
 
-cr: ovlcr_dirs $(BUILD_DIR)/OVERLAYS/CR.BIN
-$(BUILD_DIR)/OVERLAYS/CR.BIN: $(BUILD_DIR)/ovlcr.elf
+cr: ovlcr_dirs $(BUILD_DIR)/CR.BIN
+$(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
 	$(OBJCOPY) -O binary $< $@
 
 # Create a directory for each asm dir inside build.
+
 ovl%_dirs:
+	$(foreach dir,$(ASM_DIR)/ovl/$* $(ASM_DIR)/ovl/$*/data $(SRC_DIR)/ovl/$* $(ASSETS_DIR)/ovl/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+%_dirs:
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 	$(call link,ovl$*,$@)
@@ -86,7 +89,6 @@ extract: extract_ovlcr
 extract_ovl%:
 	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.ovlcr.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.ovlcr.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
-
 
 .PHONY: all, clean, format, check, expected
 .PHONY: cr
