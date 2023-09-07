@@ -43,10 +43,7 @@ M2C_ARGS        := -P 4
 define list_src_files
 	$(foreach dir,$(ASM_DIR)/$(1),$(wildcard $(dir)/**.s))
 	$(foreach dir,$(ASM_DIR)/$(1)/data,$(wildcard $(dir)/**.s))
-	$(foreach dir,$(ASM_DIR)/$(1)/psxsdk,$(wildcard $(dir)/**.s))
-	$(foreach dir,$(SRC_DIR)/$(1),$(wildcard $(dir)/**.c))
-	$(foreach dir,$(SRC_DIR)/$(1)/psxsdk,$(wildcard $(dir)/**.c))
-	$(foreach dir,$(ASSETS_DIR)/$(1),$(wildcard $(dir)/**))
+
 endef
 
 define list_o_files
@@ -81,6 +78,12 @@ ovl%_dirs:
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 	$(call link,ovl$*,$@)
+	
+$(BUILD_DIR)/%.s.o: %.s
+	$(AS) $(AS_FLAGS) -o $@ $<
+$(BUILD_DIR)/%.c.o: %.c $(CC1PSX)
+#	$(CROSS)gcc -c -nostartfiles -nodefaultlibs -ggdb -gdwarf-4 $(CPP_FLAGS) $(CC_FLAGS) $(LD_FLAGS) $< -o $@
+	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(AS) $(AS_FLAGS) -o $@
 
 check:
 	sha1sum --check config/medievil.check.sha
@@ -94,4 +97,8 @@ extract_ovl%:
 .PHONY: cr
 .PHONY: %_dirs
 .PHONY: extract, extract_%
+
+LIST_O_FILES:= $(call list_o_files,ovl/cr)
+# Print target for debugging
+print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
 
