@@ -1,0 +1,57 @@
+options:
+  basename: ovl_cr
+  target_path: CR.BIN
+  base_path: ../../..
+  platform: psx
+  compiler: GCC
+
+  asm_path: asm/medievil
+  src_path: src/medievil/main
+  build_path: build/medievil
+  # create_asm_dependencies: True
+
+  ld_script_path: disk/medievil/CR.BIN.ld
+
+  find_file_boundaries: yes
+  gp_value: 0x00000000
+
+  o_as_suffix: yes
+  use_legacy_include_asm: no
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path: config/medievil/symbols.us.txt
+  undefined_funcs_auto_path: config/medievil/undefined_funcs_auto.us.main.txt
+  undefined_syms_auto_path: config/medievil/undefined_syms_auto.us.main.txt
+  reloc_addrs_path: reloc_addrs.txt
+
+  extensions_path: tools/splat_ext
+
+  subalign: 2
+
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  # from sotn-decomp
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+segments:
+  - name: ovl_cr
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x18, c]
+      - [0x940, data]
+  - [0x1CB4]
