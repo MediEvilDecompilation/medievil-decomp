@@ -28,6 +28,12 @@ clean:
 	git clean -fdx asm/
 	git clean -fdx config/
 
+all: build check
+build: #TBA
+
+check:
+	sha1sum --check config/medievil.check.sha
+
 extract: extract_ovl_cr
 extract_ovl_cr:
 	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.ovl_cr.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.ovl_cr.txt
