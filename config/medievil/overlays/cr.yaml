@@ -6,7 +6,7 @@ options:
   compiler: GCC
 
   asm_path: asm/medievil
-  src_path: src/medievil/main
+  src_path: src/medievil/ovl_cr
   build_path: build/medievil
   # create_asm_dependencies: True
 
