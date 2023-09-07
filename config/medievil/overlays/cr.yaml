@@ -28,9 +28,9 @@ options:
     - ".data"
   # auto_all_sections: [".data", ".rodata", ".bss"]
 
-  symbol_addrs_path: config/medievil/symbols.ovl_cr.txt
-  undefined_funcs_auto_path: config/medievil/undefined_funcs_auto.ovl_cr.txt
-  undefined_syms_auto_path: config/medievil/undefined_syms_auto.ovl_cr.txt
+  symbol_addrs_path: config/medievil/symbols/symbols.ovl_cr.txt
+  undefined_funcs_auto_path: config/medievil/symbols/undefined_funcs_auto.ovl_cr.txt
+  undefined_syms_auto_path: config/medievil/symbols/undefined_syms_auto.ovl_cr.txt
   reloc_addrs_path: reloc_addrs.txt
 
   extensions_path: tools/splat_ext

@@ -4,6 +4,5 @@ asm/*/*/*/*.s
 asm/*/*/*/*/*.s
 asm/*/*/*/*/*/*.s
 generated.symbols*
-symbols*
 undefined*
 *.ld
