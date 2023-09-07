@@ -5,7 +5,7 @@
 OVL_CR          := cr
 
 # Compilers
-CC1PSX          := ./bin/cc1-psx-26
+CC1PSX          := ./bin/cc1-2.7.2#./bin/cc1-psx-26
 CROSS           := mipsel-linux-gnu-
 AS              := $(CROSS)as
 CC              := $(CC1PSX)
