@@ -15,7 +15,6 @@ options:
   find_file_boundaries: yes
   gp_value: 0x00000000
 
-  o_as_suffix: yes
   use_legacy_include_asm: no
 
   asm_function_macro: glabel
