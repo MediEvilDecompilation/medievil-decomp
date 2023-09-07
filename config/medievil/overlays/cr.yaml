@@ -5,9 +5,9 @@ options:
   platform: psx
   compiler: GCC
 
-  asm_path: asm/medievil
-  src_path: src/medievil/ovl_cr
-  build_path: build/medievil
+  asm_path: asm/medievil/overlays/cr
+  src_path: src/medievil/overlays/cr
+  build_path: build/medievil/overlays/cr
   # create_asm_dependencies: True
 
   #ld_script_path: disk/medievil/CR.BIN.ld

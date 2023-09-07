@@ -31,7 +31,7 @@ clean:
 	git clean -fdx config/
 
 extract: extract_ovl_cr
-extract_ovl_cr%:
-#cat $(CONFIG_DIR)/medievil/symbols.txt $(CONFIG_DIR)/medievil/symbols.ovl_cr.txt > $(CONFIG_DIR)/generated.symbols.ovl_cr$*.txt
+extract_ovl_cr:
+#cat $(CONFIG_DIR)/medievil/symbols.txt $(CONFIG_DIR)/medievil/symbols.ovl_cr.txt > $(CONFIG_DIR)/generated.symbols.ovl_cr.txt
 	$(SPLAT) $(CONFIG_DIR)/medievil/overlays/cr.yaml
 
