@@ -1,16 +1,16 @@
 options:
   platform: psx
-  basename: cr
+  basename: ovl_cr
   base_path: ../../..
-  build_path: build/medievil/
+  build_path: build/
   target_path: disk/medievil/OVERLAYS/CR.BIN
-  asm_path: asm/medievil/overlays/cr
-  asset_path: assets/cr
-  src_path: src/medievil/overlays/cr
+  asm_path: asm/overlays/cr
+  asset_path: assets/overlays/cr
+  src_path: src/overlays/cr
   compiler: GCC
-  symbol_addrs_path: config/symbols.cr.txt
-  undefined_funcs_auto_path: config/undefined_funcs_auto.cr.txt
-  undefined_syms_auto_path: config/undefined_syms_auto.cr.txt
+  symbol_addrs_path: config/symbols.ovl_cr.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovl_cr.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovl_cr.txt
   find_file_boundaries: yes
   use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
@@ -20,17 +20,18 @@ options:
     - ".text"
     - ".data"
 
+  subalign: 2
+
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-  segments:
-  - name: cr
+segments:
+  - name: ovl_cr
     type: code
     start: 0x00000000
     vram: 0x80010000
-    subalign: 2
     subsegments:
       - [0x0, rodata]
       - [0x18, c]
       - [0x940, data]
-  - [0x1CB4]              
+  - [0x1CB4]

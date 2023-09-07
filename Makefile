@@ -64,30 +64,31 @@ endef
 clean:
 	git clean -fdx asm/
 	git clean -fdx config/
+	git clean -fdx build/
 
 all: build check
-build: cr
+build: ovl_cr
 
-cr: ovl_dirs $(BUILD_DIR)/OVERLAYS/CR.BIN
+ovl_cr: ovl_dirs $(BUILD_DIR)/OVERLAYS/CR.BIN
 $(BUILD_DIR)/OVERLAYS/CR.BIN: $(BUILD_DIR)/$(OVL_CR).elf
 	$(OBJCOPY) -O binary $< $@
-$(BUILD_DIR)/$(OVL_CR).elf: $(call list_o_files,cr)
-	$(call link,cr,$@)
+$(BUILD_DIR)/$(OVL_CR).elf: $(call list_o_files,ovl_cr)
+	$(call link,ovl_cr,$@)
 
 check:
 	sha1sum --check config/medievil.check.sha
 
-extract: extract_cr
-extract_cr:
-	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.cr.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.cr.txt
+extract: extract_ovl_cr
+extract_ovl_cr:
+	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.ovl_cr.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.ovl_cr.txt
 	$(SPLAT) $(CONFIG_DIR)/medievil/overlays/cr.yaml
 
+# Create a directory for each asm dir inside build.
 %_dirs:
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 .PHONY: all, clean, format, check, expected
-.PHONY: cr
+.PHONY: ovl_cr
 .PHONY: %_dirs
 .PHONY: extract, extract_%
-.PHONY: update-dependencies
 
