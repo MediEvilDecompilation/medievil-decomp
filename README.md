@@ -1,6 +1,9 @@
 # MediEvil Decompilation Project
 MediEvil 1 and 2 decomp monorepository for US PSX retail version.
 
+## Discord Server
+https://discord.gg/pBU8mD3k8z
+
 ## Progress
 TBA
 
