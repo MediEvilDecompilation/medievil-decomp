@@ -70,6 +70,10 @@ clean:
 	git clean -fdx config/
 	git clean -fdx build/
 
+format:
+	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.c")
+	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.h")
+	clang-format -i $$(find $(INCLUDE_DIR)/ -type f -name "*.h")
 
 ######################### Build system #########################
 
