@@ -7,3 +7,5 @@ asm/*/*/*/*/*/*.s
 generated.symbols*
 undefined*
 *.ld
+.vscode/
+__pycache__
