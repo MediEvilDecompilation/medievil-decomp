@@ -10,12 +10,11 @@ options:
   asm_path: asm/main
   src_path: src/main
   build_path: build/
-  # create_asm_dependencies: True
-
-  #ld_script_path: medievil.exe.ld
 
   find_file_boundaries: False
   gp_value: 0x00000000
+
+  asm_emit_size_directive: False
 
   o_as_suffix: True
   use_legacy_include_asm: False
@@ -25,7 +24,6 @@ options:
   asm_data_macro: dlabel
 
   section_order: [".rodata", ".text", ".data", ".bss"]
-  # auto_all_sections: [".data", ".rodata", ".bss"]
 
   symbol_addrs_path: config/symbols.main.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.main.txt
@@ -50,6 +48,6 @@ segments:
     vram: 0x80021CA4
     bss_size: 0x0
     subsegments:
-      - [0x800, rodata, 800]
-      - [0x785B0, asm, 785B0]
+      - [0x800, c, 800]
+      - [0xA3E88, rodata, 785B0]
   - [0xCC800]
