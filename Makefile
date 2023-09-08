@@ -78,7 +78,7 @@ format:
 ######################### Build system #########################
 
 all: build check
-build: GAME overlays
+build: game overlays
 
 ### Game Executables ###
 
