@@ -11,17 +11,14 @@ options:
   src_path: src/main
   build_path: build/
 
-  find_file_boundaries: False
-  gp_value: 0x00000000
+  find_file_boundaries: True
 
   asm_emit_size_directive: False
 
-  o_as_suffix: True
   use_legacy_include_asm: False
 
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
-  asm_data_macro: dlabel
 
   section_order: [".rodata", ".text", ".data", ".bss"]
 
@@ -49,5 +46,5 @@ segments:
     bss_size: 0x0
     subsegments:
       - [0x800, c, 800]
-      - [0xA3E88, rodata, 785B0]
+      - [0xA3E88, rodata]
   - [0xCC800]

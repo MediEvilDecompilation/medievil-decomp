@@ -2,6 +2,7 @@
 .SECONDARY:
 
 # Binaries
+MAIN			:= main
 OVL_CR          := cr
 
 # Compiler
@@ -73,7 +74,11 @@ all: build check
 build: overlays #main
 
 
-#main: 
+main: main_dirs $(BUILD_DIR)/MEDIEVIL.EXE
+$(BUILD_DIR)/MEDIEVIL.EXE: $(BUILD_DIR)/$(MAIN).elf
+	$(OBJCOPY) -O binary $< $@
+$(BUILD_DIR)/$(MAIN).elf: $(call list_o_files,main)
+	$(call link,main,$@)
 
 
 ### OVERLAYS ###
@@ -110,7 +115,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_ovlcr extract_main
+extract: extract_ovlcr #extract_main
 extract_main:
 	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.main.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.medievil.exe.yaml
