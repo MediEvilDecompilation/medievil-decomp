@@ -2,7 +2,7 @@
 .SECONDARY:
 
 # Binaries
-MAIN			:= main
+GAME			:= game
 OVL_CR          := cr
 
 # Compiler
@@ -78,17 +78,17 @@ format:
 ######################### Build system #########################
 
 all: build check
-build: main overlays
+build: game overlays
 
-### Main Executables ###
+### Game Executables ###
 
 # TODO: SCUS_942.27
 
-main: main_dirs $(BUILD_DIR)/MEDIEVIL.EXE
-$(BUILD_DIR)/MEDIEVIL.EXE: $(BUILD_DIR)/$(MAIN).elf
+game: game_dirs $(BUILD_DIR)/MEDIEVIL.EXE
+$(BUILD_DIR)/MEDIEVIL.EXE: $(BUILD_DIR)/$(GAME).elf
 	$(OBJCOPY) -O binary $< $@
-$(BUILD_DIR)/$(MAIN).elf: $(call list_o_files,main)
-	$(call link,main,$@)
+$(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
+	$(call link,game,$@)
 
 %_dirs:
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
@@ -124,9 +124,9 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_ovlcr extract_main
-extract_main:
-	cat $(CONFIG_DIR)/symbols/symbols.txt $(CONFIG_DIR)/symbols/symbols.main.txt > $(CONFIG_DIR)/symbols/generated.symbols.txt
+extract: extract_ovlcr extract_game
+extract_game:
+	cat $(CONFIG_DIR)/symbols/symbols.txt $(CONFIG_DIR)/symbols/symbols.game.txt > $(CONFIG_DIR)/symbols/generated.symbols.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.medievil.exe.yaml
 
 extract_ovl%:
