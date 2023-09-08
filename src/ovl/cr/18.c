@@ -13,7 +13,7 @@ INCLUDE_ASM("asm/ovl/cr/nonmatchings/18", func_80010638);
 /*
  * First match of the project, keeping it as a reference for now
  * TODO: refactor with real structures.
-*/
+ */
 
 #if 0
 INCLUDE_ASM("asm/ovl/cr/nonmatchings/18", func_8001072C);
