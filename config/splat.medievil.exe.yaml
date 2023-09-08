@@ -1,14 +1,14 @@
 name: MEDIEVIL.EXE
 sha1: 265ce5dc508002a339ae535e49a5b1b4e683b732
 options:
-  basename: main
+  basename: game
   target_path: disk/medievil/MEDIEVIL.EXE
   base_path: ..
   platform: psx
   compiler: GCC
 
-  asm_path: asm/main
-  src_path: src/main
+  asm_path: asm/game
+  src_path: src/game
   build_path: build/
 
   find_file_boundaries: True
@@ -22,9 +22,9 @@ options:
 
   section_order: [".rodata", ".text", ".data", ".bss"]
 
-  symbol_addrs_path: config/symbols/symbols.main.txt
-  undefined_funcs_auto_path: config/undefined_funcs_auto.main.txt
-  undefined_syms_auto_path: config/undefined_syms_auto.main.txt
+  symbol_addrs_path: config/symbols/symbols.game.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.game.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.game.txt
 
   extensions_path: tools/splat_ext
 
@@ -39,7 +39,7 @@ segments:
     type: header
     start: 0x0
 
-  - name: main
+  - name: game
     type: code
     start: 0x800
     vram: 0x80021CA4
