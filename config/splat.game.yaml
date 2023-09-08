@@ -1,3 +1,5 @@
+name: MEDIEVIL.EXE
+sha1: 265ce5dc508002a339ae535e49a5b1b4e683b732
 options:
   basename: game
   target_path: disk/medievil/MEDIEVIL.EXE
