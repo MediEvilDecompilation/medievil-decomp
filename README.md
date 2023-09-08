@@ -1,3 +1,6 @@
+![welcome banner](https://github.com/DerpPrincess/medievil-decomp/assets/36901824/fea5fe49-2253-4105-b35a-a68ddcd69ec8)
+
+
 # MediEvil Decompilation Project
 MediEvil 1 and 2 decomp monorepository for US PSX retail version!
 
