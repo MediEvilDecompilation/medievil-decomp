@@ -8,7 +8,7 @@ options:
   asset_path: assets/ovl/cr
   src_path: src/ovl/cr
   compiler: GCC
-  symbol_addrs_path: config/symbols.ovlcr.txt
+  symbol_addrs_path: config/symbols/symbols.ovlcr.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.ovlcr.txt
   undefined_syms_auto_path: config/undefined_syms_auto.ovlcr.txt
   find_file_boundaries: yes

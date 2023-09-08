@@ -66,8 +66,18 @@ clean:
 	git clean -fdx config/
 	git clean -fdx build/
 
+
+# Build system
+
 all: build check
-build: cr
+build: overlays #main
+
+
+#main: 
+
+
+### OVERLAYS ###
+overlays: cr
 
 cr: ovlcr_dirs $(BUILD_DIR)/CR.BIN
 $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
@@ -76,28 +86,40 @@ $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
 ovl%_dirs:
 	$(foreach dir,$(ASM_DIR)/ovl/$* $(ASM_DIR)/ovl/$*/data $(SRC_DIR)/ovl/$* $(ASSETS_DIR)/ovl/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
-%_dirs:
-	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 	$(call link,ovl$*,$@)
 	
+%_dirs:
+	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+
+## ASSEMBLY ###
 $(BUILD_DIR)/%.s.o: %.s
 	$(AS) $(AS_FLAGS) -o $@ $<
 $(BUILD_DIR)/%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
 	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(MASPSX) | $(AS) $(AS_FLAGS) -o $@
 
+# Checksum
 check:
 	sha1sum --check config/medievil.check.sha
 
+# asm-differ expected object files
 expected: check
 	mkdir -p expected/build
 	rm -rf expected/build/
 	cp -r build/ expected/build/
 
-extract: extract_ovlcr
+
+# Assembly extraction
+extract: extract_ovlcr extract_main
+extract_main:
+	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.main.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.txt
+	$(SPLAT) $(CONFIG_DIR)/splat.medievil.exe.yaml
+
 extract_ovl%:
 	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.ovlcr.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.ovlcr.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
+
+
 
 .PHONY: all, clean, format, check, expected
 .PHONY: cr
