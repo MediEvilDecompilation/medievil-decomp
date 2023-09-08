@@ -1,0 +1,54 @@
+name: MEDIEVIL.EXE
+sha1: 265ce5dc508002a339ae535e49a5b1b4e683b732
+options:
+  basename: main
+  target_path: disk/medievil/MEDIEVIL.EXE
+  base_path: ..
+  platform: psx
+  compiler: GCC
+
+  asm_path: asm/main
+  src_path: src/main
+  build_path: build/
+
+  find_file_boundaries: True
+
+  asm_emit_size_directive: False
+
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+
+  section_order: [".rodata", ".text", ".data", ".bss"]
+
+  symbol_addrs_path: config/symbols/symbols.main.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.main.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.main.txt
+
+  extensions_path: tools/splat_ext
+
+  subalign: 2
+
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800
+    vram: 0x80021CA4
+    bss_size: 0x0
+    subsegments:
+      - [0x800, c, 800]
+      - [0x88394, rodata]
+      - [0x8839C, c]
+      - [0x99AD4, rodata]
+      - [0x99ADC, c]
+      - [0xA3E88, data]
+  - [0xCC800]

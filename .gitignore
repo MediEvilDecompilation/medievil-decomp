@@ -1,5 +1,6 @@
 disk/
 build/
+asm/*/*
 asm/*/*/*.s
 asm/*/*/*/*.s
 asm/*/*/*/*/*.s

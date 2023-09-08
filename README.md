@@ -1,14 +1,14 @@
-# MediEvil Decompilation Project
-MediEvil 1 and 2 decomp monorepository for US PSX retail version!
+![welcome banner](https://github.com/DerpPrincess/medievil-decomp/assets/36901824/fea5fe49-2253-4105-b35a-a68ddcd69ec8)
 
 ## Discord Server
-https://discord.gg/pBU8mD3k8z
+To help and join the discussion, please join our Discord Server here using this link: https://discord.gg/pBU8mD3k8z
+
+## Setup
+Our project targets the US Retail PSX versions of MediEvil 1 and 2. TBA - Being added to the Wiki for a full guide but basic guide will be written here.
+
 
 ## Progress
 TBA 
-
-## Setup
-TBA - Being added to the Wiki for a full guide but basic guide will be written here.
 
 ## How To
 TBA...
