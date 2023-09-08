@@ -4,7 +4,7 @@
 # Binaries
 OVL_CR          := cr
 
-# Compilers
+# Compiler
 CC1PSX          := ./bin/cc1-2.8.1
 CROSS           := mipsel-linux-gnu-
 AS              := $(CROSS)as

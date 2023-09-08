@@ -40,9 +40,9 @@ def apply_overlay(config, name):
 
 def apply(config, args):
     name = args.overlay or 'main'
-    if name.startswith("ovl/"):
-        apply_overlay(config, name)
-    elif name is "main":
+    if name.startswith("ovl"):
+        apply_overlay(config, name[3:])
+    elif name == "main":
         apply_base(config, name)
     else:
         apply_bin(config, name)
