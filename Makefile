@@ -60,7 +60,7 @@ endef
 define link
 	$(LD) $(LD_FLAGS) -o $(2) \
 		-Map $(BUILD_DIR)/$(1).map \
-		-T $(1).ld \
+		-T $(CONFIG_DIR)/ld/$(1).ld \
 		-T $(CONFIG_DIR)/undefined_syms_auto.$(1).txt \
 		-T $(CONFIG_DIR)/undefined_funcs_auto.$(1).txt
 endef
@@ -127,7 +127,7 @@ expected: check
 extract: extract_ovlcr extract_game
 extract_game:
 	cat $(CONFIG_DIR)/symbols/symbols.txt $(CONFIG_DIR)/symbols/symbols.game.txt > $(CONFIG_DIR)/symbols/generated.symbols.txt
-	$(SPLAT) $(CONFIG_DIR)/splat.medievil.exe.yaml
+	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
 
 extract_ovl%:
 	cat $(CONFIG_DIR)/symbols/symbols.txt $(CONFIG_DIR)/symbols/symbols.ovlcr.txt > $(CONFIG_DIR)/symbols/generated.symbols.ovlcr.txt

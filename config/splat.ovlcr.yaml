@@ -11,6 +11,7 @@ options:
   symbol_addrs_path: config/symbols.ovlcr.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.ovlcr.txt
   undefined_syms_auto_path: config/undefined_syms_auto.ovlcr.txt
+  ld_script_path: config/ld/ovlcr.ld
   find_file_boundaries: yes
   use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
