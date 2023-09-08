@@ -22,7 +22,7 @@ options:
 
   section_order: [".rodata", ".text", ".data", ".bss"]
 
-  symbol_addrs_path: config/symbols.main.txt
+  symbol_addrs_path: config/symbols/symbols.main.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.main.txt
   undefined_syms_auto_path: config/undefined_syms_auto.main.txt
 
@@ -46,5 +46,9 @@ segments:
     bss_size: 0x0
     subsegments:
       - [0x800, c, 800]
-      - [0xA3E88, rodata]
+      - [0x88394, rodata]
+      - [0x8839C, c]
+      - [0x99AD4, rodata]
+      - [0x99ADC, c]
+      - [0xA3E88, data]
   - [0xCC800]
