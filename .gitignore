@@ -7,3 +7,4 @@ asm/*/*/*/*/*/*.s
 generated.symbols*
 undefined*
 *.ld
+.vscode/

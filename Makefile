@@ -5,7 +5,7 @@
 OVL_CR          := cr
 
 # Compilers
-CC1PSX          := ./bin/cc1-2.7.2#./bin/cc1-psx-26
+CC1PSX          := ./bin/cc1-2.8.1
 CROSS           := mipsel-linux-gnu-
 AS              := $(CROSS)as
 CC              := $(CC1PSX)
@@ -14,7 +14,7 @@ CPP             := $(CROSS)cpp
 OBJCOPY         := $(CROSS)objcopy
 AS_FLAGS        += -Iinclude -march=r3000 -mtune=r3000 -no-pad-sections -O1 -G0
 PSXCC_FLAGS		:= -quiet -mcpu=3000 -fgnu-linker -mgas -gcoff
-CC_FLAGS        += -G0 -w -O2 -funsigned-char -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fverbose-asm -msoft-float -g
+CC_FLAGS        += -msplit-addresses -O2 -G0 -fsigned-char#-G0 -w -O2 -funsigned-char -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fverbose-asm -msoft-float -g
 CPP_FLAGS       += -Iinclude -undef -Wall -fno-builtin
 CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D_LANGUAGE_C -DLANGUAGE_C -DHACKS -DUSE_INCLUDE_ASM
 LD_FLAGS		:= -nostdlib --no-check-sections
@@ -47,7 +47,6 @@ define list_src_files
 	$(foreach dir,$(ASM_DIR)/$(1),$(wildcard $(dir)/**.s))
 	$(foreach dir,$(ASM_DIR)/$(1)/data,$(wildcard $(dir)/**.s))
 	$(foreach dir,$(SRC_DIR)/$(1),$(wildcard $(dir)/**.c))
-
 endef
 
 define list_o_files
@@ -74,10 +73,9 @@ cr: ovlcr_dirs $(BUILD_DIR)/CR.BIN
 $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
 	$(OBJCOPY) -O binary $< $@
 
-# Create a directory for each asm dir inside build.
-
 ovl%_dirs:
 	$(foreach dir,$(ASM_DIR)/ovl/$* $(ASM_DIR)/ovl/$*/data $(SRC_DIR)/ovl/$* $(ASSETS_DIR)/ovl/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+
 %_dirs:
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
@@ -86,11 +84,15 @@ $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 $(BUILD_DIR)/%.s.o: %.s
 	$(AS) $(AS_FLAGS) -o $@ $<
 $(BUILD_DIR)/%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
-#	$(CROSS)gcc -c -nostartfiles -nodefaultlibs -ggdb -gdwarf-4 $(CPP_FLAGS) $(CC_FLAGS) $(LD_FLAGS) $< -o $@
 	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(MASPSX) | $(AS) $(AS_FLAGS) -o $@
 
 check:
 	sha1sum --check config/medievil.check.sha
+
+expected: check
+	mkdir -p expected/build
+	rm -rf expected/build/
+	cp -r build/ expected/build/
 
 extract: extract_ovlcr
 extract_ovl%:
@@ -102,7 +104,4 @@ extract_ovl%:
 .PHONY: %_dirs
 .PHONY: extract, extract_%
 
-LIST_O_FILES:= $(call list_o_files,ovl/cr)
-# Print target for debugging
-print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
 
