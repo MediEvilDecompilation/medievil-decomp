@@ -16,3 +16,4 @@
     addu \a, \b, $zero
 .endm
 
+.include "gte.inc"

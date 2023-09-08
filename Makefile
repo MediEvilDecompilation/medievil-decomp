@@ -71,7 +71,7 @@ clean:
 # Build system
 
 all: build check
-build: overlays #main
+build: overlays main
 
 
 main: main_dirs $(BUILD_DIR)/MEDIEVIL.EXE
@@ -115,7 +115,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_ovlcr #extract_main
+extract: extract_ovlcr extract_main
 extract_main:
 	cat $(CONFIG_DIR)/medievil/symbols/symbols.txt $(CONFIG_DIR)/medievil/symbols/symbols.main.txt > $(CONFIG_DIR)/medievil/symbols/generated.symbols.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.medievil.exe.yaml
