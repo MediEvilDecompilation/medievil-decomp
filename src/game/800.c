@@ -1,4 +1,4 @@
-#include "common.h"
+#include "game.h"
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80021CA4);
 
@@ -2680,7 +2680,16 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6358);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6384);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800A63B0);
+bool func_800A63B0(unkStruct_800A63B0* arg0) {
+    unkStruct_800A63B0* temp_v1 = arg0->unk18 + (arg0->unk1C * 4);
+
+    arg0->unk10 = temp_v1->unk6;
+    arg0->unk11 = temp_v1->unk5;
+    arg0->unk12 = temp_v1->unk4;
+    arg0->unk1C += 2;
+
+    return true;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A63F4);
 
