@@ -1,3 +1,5 @@
+name: CR.BIN
+sha1: b52e73eea027f2a517be47b6f2133e3a6ac73a15
 options:
   platform: psx
   basename: ovlcr
@@ -11,6 +13,7 @@ options:
   symbol_addrs_path: config/symbols.ovlcr.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.ovlcr.txt
   undefined_syms_auto_path: config/undefined_syms_auto.ovlcr.txt
+  ld_script_path: config/ld/ovlcr.ld
   find_file_boundaries: yes
   use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
