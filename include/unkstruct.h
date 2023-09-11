@@ -25,3 +25,8 @@ typedef struct unkStruct_800EDA44 {
     /* 0x10 */ char pad_10[4];
     /* 0x14 */ s32 unk14;
 } unkStruct_800EDA44;
+
+typedef struct unkStruct_RET_80049B64 {
+    char pad_0[0x5C];
+    s8 unk5C;
+} unkStruct_RET_80049B64;
