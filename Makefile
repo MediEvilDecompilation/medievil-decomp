@@ -67,7 +67,6 @@ define link
 endef
 
 
-
 ######################### Build system #########################
 
 all: build check
@@ -127,7 +126,7 @@ extract_game:
 	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
 
 extract_ovl%:
-	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.ovlcr.txt > $(CONFIG_DIR)/generated.symbols.ovlcr.txt
+	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.ovl$*.txt > $(CONFIG_DIR)/generated.symbols.ovl$*.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
 
 
