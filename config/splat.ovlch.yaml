@@ -1,0 +1,40 @@
+name: CR.BIN
+sha1: 87fd421e4990c34075e901b4d658ca51f24ff2c7
+options:
+  platform: psx
+  basename: ovlch
+  base_path: ..
+  build_path: build/
+  target_path: disk/medievil/OVERLAYS/CH.BIN
+  asm_path: asm/ovl/ch
+  asset_path: assets/ovl/ch
+  src_path: src/ovl/ch
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlch.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlch.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlch.txt
+  ld_script_path: config/ld/ovlch.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlch
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0xB0, c]
+      - [0x39B0, data]
+  - [0x62FC]
