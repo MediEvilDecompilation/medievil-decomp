@@ -22,7 +22,7 @@ options:
 
   section_order: [".rodata", ".text", ".data", ".bss"]
 
-  symbol_addrs_path: config/symbols/symbols.game.txt
+  symbol_addrs_path: config/symbols.game.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.game.txt
   undefined_syms_auto_path: config/undefined_syms_auto.game.txt
   ld_script_path: config/ld/game.ld
