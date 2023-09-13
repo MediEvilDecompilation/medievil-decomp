@@ -6,6 +6,10 @@ extern unkStruct_800EDA44* D_800EDA44;
 extern unkStruct_800EDA44* D_800EDA58;
 extern s32 D_800EDC10;
 extern s32 D_800EDC10;
-extern u8 D_800EE92C[];
 extern s8 D_800EE938;
 extern s32* D_800EE978;
+
+extern s32 D_800111D0;
+extern unkStruct_800EDB3C* D_800EDB3C;
+extern unkStruct_D_800EE92C D_800EE92C;
+extern unkStruct_800EEE64 D_800EEE64;

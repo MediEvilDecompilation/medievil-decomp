@@ -30,3 +30,35 @@ typedef struct unkStruct_RET_80049B64 {
     char pad_0[0x5C];
     s8 unk5C;
 } unkStruct_RET_80049B64;
+
+
+typedef struct {
+    /* 0x000 */ char pad_0[0x530];
+    /* 0x530 */ s32 unk530;
+} unkStruct_800EDB3C;
+
+typedef struct {
+    /* 0x00 */ char pad_10[0xB];
+    /* 0x0B */ s8 unkB;
+    /* 0x0C */ u8 unkC;
+    /* 0x0D */ char pad_0C[0x4F];
+    /* 0x4C */ s32* unk4C;
+} unkStruct_D_800EE92C;
+
+typedef struct {
+    /* 0x00 */ char pad_0[0x98];
+    /* 0x98 */ s16 unk98;
+    /* 0x9A */ s16 unk9A;
+} unkStruct_800EEE64;
+
+typedef struct unkStruct_SP_80010638_unk80 {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ char pad_4[0x3E];
+    /* 0x42 */ s16 unk42;
+} unkStruct_SP_80010638_unk80;
+
+typedef struct unkStruct_SP_80010638 {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ char pad_4[0x7C];
+    /* 0x80 */ struct unkStruct_SP_80010638_unk80* unk80;
+} unkStruct_SP_80010638;

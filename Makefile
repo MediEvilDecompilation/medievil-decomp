@@ -65,15 +65,7 @@ define link
 		-T $(CONFIG_DIR)/undefined_funcs_auto.$(1).txt
 endef
 
-clean:
-	git clean -fdx asm/
-	git clean -fdx config/
-	git clean -fdx build/
 
-format:
-	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.c")
-	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.h")
-	clang-format -i $$(find $(INCLUDE_DIR)/ -type f -name "*.h")
 
 ######################### Build system #########################
 
@@ -114,7 +106,7 @@ $(BUILD_DIR)/%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
 
 # Checksum
 check:
-	sha1sum --check config/medievil.check.sha
+	@sha1sum --check config/medievil.check.sha
 
 # asm-differ expected object files
 expected: check
@@ -132,6 +124,18 @@ extract_game:
 extract_ovl%:
 	cat $(CONFIG_DIR)/symbols/symbols.txt $(CONFIG_DIR)/symbols/symbols.ovlcr.txt > $(CONFIG_DIR)/symbols/generated.symbols.ovlcr.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
+
+
+clean:
+	git clean -fdx asm/
+	git clean -fdx config/
+	git clean -fdx build/
+
+
+format:
+	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.c")
+	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.h")
+	clang-format -i $$(find $(INCLUDE_DIR)/ -type f -name "*.h")
 
 
 .PHONY: all, clean, format, check, expected

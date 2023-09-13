@@ -1,0 +1,4 @@
+compiler_type = "gcc"
+build_systemp = "make"
+[decompme.compilers]
+"mipsel-linux-gnu-cpp" = "psyq4.3"
