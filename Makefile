@@ -61,6 +61,7 @@ define link
 	$(LD) $(LD_FLAGS) -o $(2) \
 		-Map $(BUILD_DIR)/$(1).map \
 		-T $(CONFIG_DIR)/ld/$(1).ld \
+		-T $(CONFIG_DIR)/undefined_syms.txt \
 		-T $(CONFIG_DIR)/undefined_syms_auto.$(1).txt \
 		-T $(CONFIG_DIR)/undefined_funcs_auto.$(1).txt
 endef

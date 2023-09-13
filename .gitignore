@@ -6,5 +6,5 @@ build
 disk
 
 generated.symbols*
-undefined*
+*auto.*.txt
 *.ld
