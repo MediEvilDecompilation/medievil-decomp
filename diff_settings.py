@@ -2,10 +2,10 @@
 
 def add_custom_arguments(parser):
     parser.add_argument(
-        "--overlay",
-        default="cr",
+        '--overlay',
+        default='game',
         dest='overlay',
-        help="Defines which overlay to use for the diff (cr, etc.)",
+        help='Defines which overlay to use for the diff (game, ovlcr, etc.)',
     )
 
 
@@ -19,7 +19,7 @@ def apply_base(config, name):
 
 
 def apply_bin(config, name):
-    config["arch"] = "mipsel"
+    config['arch'] = 'mipsel'
     config['baseimg'] = 'iso/' + (f'BIN/{name}.BIN').upper()
     config['myimg'] = 'build/' + (f'{name}.bin').upper()
     config['mapfile'] = f'build/{name}.map'
@@ -29,7 +29,7 @@ def apply_bin(config, name):
 
 
 def apply_overlay(config, name):
-    config["arch"] = "mipsel"
+    config['arch'] = 'mipsel'
     config['baseimg'] = 'iso/' + (f'OVERLAYS/{name}.BIN').upper()
     config['myimg'] = 'build/' + (f'{name}.bin').upper()
     config['mapfile'] = f'build/ovl{name}.map'
@@ -39,13 +39,13 @@ def apply_overlay(config, name):
 
 
 def apply(config, args):
-    name = args.overlay or 'main'
-    if name.startswith("ovl"):
+    name = args.overlay or 'game'
+    if name.startswith('ovl'):
         apply_overlay(config, name[3:])
-    elif name == "main":
+    elif name == 'game':
         apply_base(config, name)
     else:
         apply_bin(config, name)
 
-    config["arch"] = "mipsel"
+    config['arch'] = 'mipsel'
     config['objdump_executable'] = 'mipsel-linux-gnu-objdump'
