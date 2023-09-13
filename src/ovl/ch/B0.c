@@ -34,7 +34,19 @@ void func_80011128(void) {
     }
 }
 
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_8001119C);
+#else
+bool func_8001119C(void) {
+    Entity* currentEntity = *(s32*)0x1F8000A4;
+    Boulder* boulder = (Boulder*)currentEntity->unk90;
+
+    if (func_80058344(boulder->unk40) == 0) {
+        func_8004847C(currentEntity->unkA4, 3);
+    }
+    return false;
+}
+#endif
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800111EC);
 
