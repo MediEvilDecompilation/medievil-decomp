@@ -31,7 +31,6 @@ typedef struct unkStruct_RET_80049B64 {
     s8 unk5C;
 } unkStruct_RET_80049B64;
 
-
 typedef struct {
     /* 0x000 */ char pad_0[0x530];
     /* 0x530 */ s32 unk530;
