@@ -1,4 +1,4 @@
-#include "common.h"
+#include "ch.h"
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800100B0);
 
@@ -18,7 +18,21 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80010E50);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800110C0);
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011128);
+void func_80011128(void) {
+    Entity* currentEntity = *(s32*)0x1F8000A4;
+    Boulder* temp_s0 = (Boulder*)currentEntity->unk90;
+
+    if (temp_s0->unk40 != NULL) {
+        func_800585B8(temp_s0->unk40);
+    }
+
+    func_8002BA9C(temp_s0->unk44);
+
+    if (temp_s0->unk3C != -1) {
+        func_8006820C(temp_s0->unk3C, 1);
+        temp_s0->unk3C = -1;
+    }
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_8001119C);
 
