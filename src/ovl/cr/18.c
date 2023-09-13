@@ -8,13 +8,6 @@ INCLUDE_ASM("asm/ovl/cr/nonmatchings/18", func_80010470);
 
 INCLUDE_ASM("asm/ovl/cr/nonmatchings/18", func_80010588);
 
-// GCC 2.8.1: regalloc
-#ifndef NON_MATCHING
-INCLUDE_ASM("asm/ovl/cr/nonmatchings/18", func_80010638);
-#else
-extern s32 func_800713CC(s32);
-extern void func_80047F98(unkStruct_SP_80010638_unk80*);
-
 void func_80010638(void) {
     s32* temp_s1 = D_800EE92C.unk4C;
     unkStruct_SP_80010638* temp_a0;
@@ -27,7 +20,7 @@ void func_80010638(void) {
     } else {
         func_80047F60(D_800EDB3C->unk530);
         func_800485EC(-0x5CA, 0, 0x11, 1);
-        temp_a0 = *(unkStruct_SP_80010638**)0x1F8000A4;
+        temp_a0 = g_CurrentEntity;
         temp_a0->unk80->unk42 = 0x400;
         temp_a0_2 = temp_a0->unk80;
         temp_a0_2->unk0 |= 0x20000;
@@ -40,7 +33,6 @@ void func_80010638(void) {
     }
     *temp_s1 = 1;
 }
-#endif
 
 void func_8001072C(void) {
     if ((*D_800EE978 != 0) && (D_800EDA58 != NULL) && (D_800EDA44->unk14 & 0x01000000)) {
