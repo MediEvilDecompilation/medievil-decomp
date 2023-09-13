@@ -86,7 +86,11 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: cr
+overlays: ch cr 
+
+ch: ovlch_dirs $(BUILD_DIR)/CH.BIN
+$(BUILD_DIR)/CH.BIN: $(BUILD_DIR)/ovlch.elf
+	$(OBJCOPY) -O binary $< $@
 
 cr: ovlcr_dirs $(BUILD_DIR)/CR.BIN
 $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
@@ -116,7 +120,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_ovlcr extract_game
+extract: extract_ovlcr extract_ovlch extract_game
 extract_game:
 	cat $(CONFIG_DIR)/symbols/symbols.txt $(CONFIG_DIR)/symbols/symbols.game.txt > $(CONFIG_DIR)/symbols/generated.symbols.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
