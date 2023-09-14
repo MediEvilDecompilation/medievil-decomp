@@ -11,7 +11,6 @@ INCLUDE_ASM("asm/ovl/cr/nonmatchings/18", func_80010588);
 void func_80010638(void) {
     s32* temp_s1 = D_800EE92C.unk4C;
     unkStruct_SP_80010638* temp_a0;
-    unkStruct_SP_80010638_unk80* temp_a0_2;
 
     if (func_800713CC(0xB621) == 0) {
         func_8007134C(0xB621, 0);
@@ -22,9 +21,9 @@ void func_80010638(void) {
         func_800485EC(-0x5CA, 0, 0x11, 1);
         temp_a0 = g_CurrentEntity;
         temp_a0->unk80->unk42 = 0x400;
-        temp_a0_2 = temp_a0->unk80;
-        temp_a0_2->unk0 |= 0x20000;
-        func_80047F98(temp_a0_2);
+        temp_a0 = temp_a0->unk80;
+        temp_a0->unk0 |= 0x20000;
+        func_80047F98(temp_a0);
         if (D_800EEE64.unk98 == -1) {
             D_800EEE64.unk98 = -0x8000;
         } else {
