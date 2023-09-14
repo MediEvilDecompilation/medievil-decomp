@@ -19,8 +19,7 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80010E50);
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800110C0);
 
 void BoulderDestroy(void) {
-    Entity* currentEntity = *(s32*)0x1F8000A4;
-    Boulder* temp_s0 = (Boulder*)currentEntity->unk90;
+    Boulder* temp_s0 = (Boulder*)g_CurrentEntity->unk90;
 
     if (temp_s0->unk40 != NULL) {
         func_800585B8(temp_s0->unk40);
@@ -34,19 +33,14 @@ void BoulderDestroy(void) {
     }
 }
 
-#ifndef NON_MATCHING
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", BoulderSmash);
-#else
 bool BoulderSmash(void) {
-    Entity* currentEntity = *(s32*)0x1F8000A4;
-    Boulder* boulder = (Boulder*)currentEntity->unk90;
+    Boulder* boulder = (Boulder*)g_CurrentEntity->unk90;
 
     if (func_80058344(boulder->unk40) == 0) {
-        func_8004847C(currentEntity->unkA4, 3);
+        func_8004847C(g_CurrentEntity, 3);
     }
     return false;
 }
-#endif
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800111EC);
 

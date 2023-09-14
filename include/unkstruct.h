@@ -40,7 +40,7 @@ typedef struct {
     /* 0x00 */ char pad_10[0xB];
     /* 0x0B */ s8 unkB;
     /* 0x0C */ u8 unkC;
-    /* 0x0D */ char pad_0C[0x4F];
+    /* 0x0D */ char pad_0D[0x3F];
     /* 0x4C */ s32* unk4C;
 } unkStruct_D_800EE92C;
 
