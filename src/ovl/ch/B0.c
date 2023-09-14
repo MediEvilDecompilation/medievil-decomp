@@ -46,7 +46,15 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800111EC);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011310);
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_8001138C);
+void func_8001138C(void) {
+    Gargoyle* gargoyle = (Gargoyle*)(g_CurrentEntity)->unk90;
+
+    func_80047FC8();
+    AddrCopy(g_CurrentEntity->unk74->unk8->unk14[0]->cv, D_80014F78);
+    func_80046D74(1, 1);
+    gargoyle->unk0 = 0;
+    gargoyle->unk8 = -1;
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_8001140C);
 

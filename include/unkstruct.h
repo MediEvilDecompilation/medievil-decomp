@@ -1,3 +1,6 @@
+#ifndef UNKSTRUCT_H
+#define UNKSTRUCT_H
+
 #include "types.h"
 
 typedef struct unkStruct_800A63B0 {
@@ -61,3 +64,5 @@ typedef struct unkStruct_SP_80010638 {
     /* 0x04 */ char pad_4[0x7C];
     /* 0x80 */ struct unkStruct_SP_80010638_unk80* unk80;
 } unkStruct_SP_80010638;
+
+#endif

@@ -1,4 +1,6 @@
-#include "common.h"
+#ifndef ENTITY_H
+#define ENTITY_H
+
 #include "game.h"
 
 typedef struct UnkStruct_ {
@@ -24,4 +26,11 @@ typedef struct Entity {
     /* 0x94 */ char pad_94[0x10];
     /* 0xA4 */ s32 unkA4;
 } Entity;
+
+/*
+ * g_CurrentEntity is allocated in 0x1F8000A4
+ * which is part of the PSX D-Cache area.
+ */
+extern Entity* g_CurrentEntity;
+#endif
 
