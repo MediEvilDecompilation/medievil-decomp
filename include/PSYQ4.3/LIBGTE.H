@@ -135,10 +135,11 @@
 #endif
 
 #ifndef ASSEMBLER
-typedef struct  {
-	short	m[3][3];	/* 3x3 rotation matrix */
-        long    t[3];		/* transfer vector */
-} MATRIX;
+
+typedef struct {
+    /* 0x00 */ short m[3][3]; /* 3x3 rotation matrix */
+    /* 0x12 */ long t[3];     /* transfer vector */
+} MATRIX;                     // size = 0x24
 
 typedef struct {		/* long word type 3D vector */
 	long	vx, vy;
