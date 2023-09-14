@@ -1,4 +1,3 @@
-#include "common.h"
 #include "game.h"
 
 unkStruct_RET_80049B64* func_80049B64(s32, u8);
