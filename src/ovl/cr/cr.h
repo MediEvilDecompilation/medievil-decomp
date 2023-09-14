@@ -1,3 +1,5 @@
+#ifndef CR_H
+#define CR_H
 #include "game.h"
 
 unkStruct_RET_80049B64* func_80049B64(s32, u8);
@@ -16,3 +18,5 @@ extern unkStruct_800EEE64 D_800EEE64;
 
 extern s32 func_800713CC(s32);
 extern void func_80047F98(unkStruct_SP_80010638_unk80*);
+
+#endif
