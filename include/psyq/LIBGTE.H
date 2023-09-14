@@ -151,7 +151,7 @@ typedef struct {		/* short word type 3D vector */
 	short	vz, pad;
 } SVECTOR;
 	       
-typedef struct {		/* color type vector */	
+typedef struct CVECTOR {		/* color type vector */	
 	u_char	r, g, b, cd;
 } CVECTOR;
 	       
