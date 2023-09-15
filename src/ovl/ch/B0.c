@@ -98,7 +98,9 @@ void func_80011904(void) {
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011950);
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A60);
+bool func_80011A60(void) {
+    return false;
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A68);
 
