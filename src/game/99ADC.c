@@ -36,7 +36,14 @@ INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB500);
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB5D8);
 
+// compiles with 2.7.2
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB6B0);
+#else
+s32 func_800BB6B0(void) {
+    return D_800F6CF0 + (D_800F6CF4 * 2) + (D_800F6CF8 * 4) + (D_800F6CFC * 8);
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB6EC);
 

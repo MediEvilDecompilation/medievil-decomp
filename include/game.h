@@ -4,3 +4,7 @@
 
 extern s32* D_800EC9D8;
 extern s32 D_800EC8F4;
+extern s32 D_800F6CF0;
+extern s32 D_800F6CF4;
+extern s32 D_800F6CF8;
+extern s32 D_800F6CFC;
