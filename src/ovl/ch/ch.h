@@ -16,6 +16,14 @@ typedef struct Gargoyle {
     /* 0x08 */ s32 unk8;
 } Gargoyle;
 
+typedef struct Zarok {
+    /* 0x00 */ char pad_0[0x4];
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ char pad_0C[0x30];
+    /* 0x3C */ s16 unk3C;
+} Zarok;
+
 extern CVECTOR D_80014F78;
 
 extern void func_8002BA9C(s32);

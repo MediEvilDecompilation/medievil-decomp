@@ -77,7 +77,15 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011700);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011854);
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800118A4);
+void ZarokInit(void) {
+    Zarok* temp_s0 = (Zarok*)g_CurrentEntity->unk90;
+    
+    func_80047FC8();
+    func_80046D74(1, 1);
+    temp_s0->unk4 = func_80049B64(43660, 1);
+    temp_s0->unk8 = func_80049B64(43659, 1);
+    temp_s0->unk3C = 0;
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011904);
 
