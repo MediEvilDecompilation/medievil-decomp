@@ -1,2 +1,4 @@
 BoulderDestroy = 0x80011128;
 BoulderSmash = 0x8001119C;
+GargoyleInit = 0x8001138C;
+GargoyleDestroy = 0x8001140C;
