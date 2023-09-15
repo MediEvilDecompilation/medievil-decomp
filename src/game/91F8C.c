@@ -32,7 +32,13 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B54D0);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B55C8);
 
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B569C);
+#else
+s32 func_800B569C(s32 arg0,s32* arg1) {
+    func_800C1784(D_800ED0B0(), arg1);
+}
+#endif
 
 #ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B56D4);
