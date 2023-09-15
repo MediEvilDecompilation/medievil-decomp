@@ -102,7 +102,9 @@ bool func_80011A60(void) {
     return false;
 }
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A68);
+bool func_80011A68(void) {
+    return false;
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A70);
 
