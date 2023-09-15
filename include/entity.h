@@ -33,7 +33,11 @@ typedef struct Animation {
 } Animation;
 
 typedef struct Entity {
-    /* 0x0C */ char pad_0[0x74];
+    /* 0x0C */ char pad_0[0x4C];
+    /* 0x4C */ s32 unk4C;
+    /* 0x50 */ char pad_50[0xC];
+    /* 0x5C */ s8 unk5C;
+    /* 0x5D */ char pad_5D[0x16];
     /* 0x74 */ Animation* unk74;
     /* 0x78 */ char pad_78[0x18];
     /* 0x90 */ s32 unk90;

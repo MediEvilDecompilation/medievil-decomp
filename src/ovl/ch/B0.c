@@ -58,7 +58,7 @@ void GargoyleInit(void) {
 
 void GargoyleDestroy(void) {
     Gargoyle* gargoyle = (Gargoyle*)g_CurrentEntity->unk90;
-    
+
     if (gargoyle->fragments != 0) {
         DestroyFragments(gargoyle->fragments);
     }
@@ -79,7 +79,7 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011854);
 
 void ZarokInit(void) {
     Zarok* temp_s0 = (Zarok*)g_CurrentEntity->unk90;
-    
+
     func_80047FC8();
     func_80046D74(1, 1);
     temp_s0->unk4 = func_80049B64(43660, 1);
@@ -87,7 +87,14 @@ void ZarokInit(void) {
     temp_s0->unk3C = 0;
 }
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011904);
+void func_80011904(void) {
+    if (g_CurrentEntity->unk5C != 2) {
+        if (g_CurrentEntity->unk5C == 4) {
+            g_CurrentEntity->unk4C |= 0x8000;
+            func_8004847C(g_CurrentEntity, 3);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011950);
 
