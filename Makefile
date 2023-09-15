@@ -62,6 +62,7 @@ define link
 		-Map $(BUILD_DIR)/$(1).map \
 		-T $(CONFIG_DIR)/ld/$(1).ld \
 		-T $(CONFIG_DIR)/symbols.txt \
+		-T $(CONFIG_DIR)/symbols.game.txt \
 		-T $(CONFIG_DIR)/undefined_syms.txt \
 		-T $(CONFIG_DIR)/undefined_syms_auto.$(1).txt \
 		-T $(CONFIG_DIR)/undefined_funcs_auto.$(1).txt
@@ -123,12 +124,14 @@ expected: check
 # Assembly extraction
 extract: extract_ovlcr extract_ovlch extract_game
 extract_game:
-	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.game.txt > $(CONFIG_DIR)/generated.symbols.txt
+	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.game.txt > $(CONFIG_DIR)/generated.symbols.game.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
 
 extract_ovl%:
 	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.ovl$*.txt > $(CONFIG_DIR)/generated.symbols.ovl$*.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
+
+$(CONFIG_DIR)/generated.symbols.%.txt:
 
 
 clean:

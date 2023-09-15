@@ -22,7 +22,7 @@ void BoulderDestroy(void) {
     Boulder* temp_s0 = (Boulder*)g_CurrentEntity->unk90;
 
     if (temp_s0->unk40 != NULL) {
-        func_800585B8(temp_s0->unk40);
+        DestroyFragments(temp_s0->unk40);
     }
 
     func_8002BA9C(temp_s0->unk44);
@@ -52,15 +52,15 @@ void GargoyleInit(void) {
     func_80047FC8();
     AddrCopy(g_CurrentEntity->unk74->unk8->unk14[0]->cv, D_80014F78);
     func_80046D74(1, 1);
-    gargoyle->unk0 = 0;
+    gargoyle->fragments = 0;
     gargoyle->unk8 = -1;
 }
 
 void GargoyleDestroy(void) {
     Gargoyle* gargoyle = (Gargoyle*)g_CurrentEntity->unk90;
     
-    if (gargoyle->unk0 != 0) {
-        func_800585B8(gargoyle->unk0);
+    if (gargoyle->fragments != 0) {
+        DestroyFragments(gargoyle->fragments);
     }
 
     if (gargoyle->unk8 != -1) {

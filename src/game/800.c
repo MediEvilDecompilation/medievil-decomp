@@ -879,7 +879,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800580B8);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80058344);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800585B8);
+INCLUDE_ASM("asm/game/nonmatchings/800", DestroyFragments);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80058614);
 
