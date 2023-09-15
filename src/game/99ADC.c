@@ -1,4 +1,4 @@
-#include "common.h"
+#include "game.h"
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BAF80);
 
@@ -92,8 +92,22 @@ INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BC41C);
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BC4C0);
 
+// compiles with v0 instead of a0
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BC518);
+#else
+s32 func_800BC518(void) {
+    *D_800EC9D8 = (*D_800EC9D8 & 0xF0FFFFFF) | 0x20000000;
+}
+#endif
 
+// compiles with v0 instead of a0
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BC540);
+#else
+s32 func_800BC540(void) {
+    *D_800EC9D8 = (*D_800EC9D8 & 0xF0FFFFFF) | 0x22000000;
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BC568);
