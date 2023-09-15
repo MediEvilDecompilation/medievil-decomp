@@ -3,6 +3,20 @@
 
 #include "game.h"
 
+typedef struct CollisionResult {
+    /* 0x0 */ VECTOR point;
+    /* 0xC */ VECTOR unkC;
+} CollisionResult; // size = 0x18
+
+typedef struct ColliderData {
+    /* 0x00 */ SVECTOR unk0[8];
+    /* 0x40 */ SVECTOR unk40;
+    /* 0x48 */ Entity* unk48;
+    /* 0x4C */ u16 unk4C;
+    /* 0x4E */ u16 unk4E;
+    /* 0x50 */ CollisionResult colRes;
+} ColliderData; // size = 0x68
+
 typedef struct UnkStruct_ {
     /* 0x00 */ char pad_0[0x10];
     /* 0x10 */ CVECTOR cv;

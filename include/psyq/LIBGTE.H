@@ -141,15 +141,19 @@ typedef struct {
     /* 0x12 */ long t[3];     /* transfer vector */
 } MATRIX;                     // size = 0x24
 
-typedef struct {		/* long word type 3D vector */
-	long	vx, vy;
-	long	vz, pad;
-} VECTOR;
+typedef struct { /* long word type 3D vector */
+    /* 0x00 */ long vx;
+    /* 0x04 */ long vy;
+    /* 0x08 */ long vz;
+    /* 0x0A */ long pad;
+} VECTOR; // size = 0xC
 	
-typedef struct {		/* short word type 3D vector */	
-	short	vx, vy;
-	short	vz, pad;
-} SVECTOR;
+typedef struct { /* short word type 3D vector */
+    /* 0x00 */ short vx;
+    /* 0x02 */ short vy;
+    /* 0x04 */ short vz;
+    /* 0x06 */ short pad;
+} SVECTOR; // size = 0x8;
 	       
 typedef struct CVECTOR {		/* color type vector */	
 	u_char	r, g, b, cd;
