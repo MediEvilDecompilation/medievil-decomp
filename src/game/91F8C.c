@@ -40,7 +40,14 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5728);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5738);
 
+// problem with nop-s after this function
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B574C);
+#else
+s32 func_800B574C(void) {
+    return D_800EC8F4;
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5768);
 
