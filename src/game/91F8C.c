@@ -71,31 +71,20 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5868);
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5878);
 #else
 u8* func_800B5878(u8* arg0, u8* arg1, s32 arg2) {
-    s32 var_a2;
-    u8 temp_v0;
+    u8* ret = NULL;
     u8* temp_v1;
-    u8* var_a0;
-    u8* var_a1;
-    u8* var_v0;
-
-    var_a0 = arg0;
-    var_a1 = arg1;
-    var_a2 = arg2;
-    var_v0 = NULL;
-    if (var_a0 != NULL) {
-        temp_v1 = var_a0;
-        if (var_a2 > 0) {
-            do {
-                temp_v0 = *var_a1;
-                var_a1 += 1;
-                var_a2 -= 1;
-                *var_a0 = temp_v0;
-                var_a0 += 1;
-            } while (var_a2 > 0);
+    
+    if (arg0 != NULL) {
+        temp_v1 = arg0;
+        while (arg2 > 0) {
+            *arg0 = *arg1;
+            arg0++;
+            arg1++;
+            arg2--;
         }
-        var_v0 = temp_v1;
+        ret = temp_v1;
     }
-    return var_v0;
+    return ret;
 }
 #endif
 
