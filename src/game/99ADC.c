@@ -36,7 +36,7 @@ INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB500);
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB5D8);
 
-// compiles with 2.7.2
+// matches with gcc 2.7.2
 #ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB6B0);
 #else
