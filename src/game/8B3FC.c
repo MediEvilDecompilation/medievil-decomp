@@ -12,7 +12,7 @@ INCLUDE_ASM("asm/game/nonmatchings/8B3FC", func_800AD344);
 #ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/8B3FC", func_800AD750);
 #else
-extern s8* D_800EB6B0;
+extern    s8* D_800EB6B0;
 extern u8* D_800EB6B4;
 extern u8* D_800EB6B8;
 extern u8* D_800EB6BC;
