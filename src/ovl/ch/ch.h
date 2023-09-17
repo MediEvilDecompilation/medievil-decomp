@@ -5,9 +5,9 @@
 
 typedef struct Boulder {
     /* 0x00 */ char pad_0[0x3C];
-    /* 0x3C */ s32 unk3C;
+                         /* 0x3C */ s32 unk3C;
     /* 0x40 */ s32* unk40;
-    /* 0x44 */ s32 unk44;
+    /* 0x44 */            s32 unk44;
 } Boulder;
 
 typedef struct Gargoyle {
