@@ -108,7 +108,7 @@ s32 func_800BC518(void) {
 }
 #endif
 
-// compiles with v0 instead of a0
+// matches with gcc 2.7.2
 #ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BC540);
 #else
