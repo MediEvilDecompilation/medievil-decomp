@@ -1,4 +1,4 @@
-#include "common.h"
+#include "game.h"
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B3430);
 
@@ -32,15 +32,31 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B54D0);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B55C8);
 
-INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B569C);
+s32 func_800B569C(s32 arg0,s32* arg1) {
+    func_800C1784(D_800ED0B0(), arg1);
+}
 
+// problem with nop-s after this function
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B56D4);
+#else
+void func_800B56D4(s32 arg0, s32 arg1, s32 arg2) {
+    func_800C0ED8(D_800ED0B0(), arg1, arg2);
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5728);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5738);
 
+// problem with nop-s after this function
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B574C);
+#else
+s32 func_800B574C(void) {
+    return D_800EC8F4;
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5768);
 
@@ -50,7 +66,27 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5858);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5868);
 
+// problem with nop-s after this function
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5878);
+#else
+u8* func_800B5878(u8* arg0, u8* arg1, s32 arg2) {
+    u8* ret = NULL;
+    u8* temp_v1;
+    
+    if (arg0 != NULL) {
+        temp_v1 = arg0;
+        while (arg2 > 0) {
+            *arg0 = *arg1;
+            arg0++;
+            arg1++;
+            arg2--;
+        }
+        ret = temp_v1;
+    }
+    return ret;
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B58B8);
 
