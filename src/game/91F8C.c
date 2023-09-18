@@ -114,7 +114,18 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B89A8);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B906C);
 
+// matches with gcc 2.7.2
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B9A04);
+#else
+s32* func_800B9A04(void) {
+    *D_800EC928 = 0x100;
+    D_800EC924 = 0;
+    func_800B9AF4(&D_800EC904, 8);
+    func_800A9220(0, &func_800B9A5C);
+    return &func_800B9AC8;
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B9A5C);
 
