@@ -19,3 +19,4 @@ extern s32 D_800EC924;
 extern s32* D_800EC928;
 extern s32 func_800B9A5C;
 extern s32 func_800B9AC8;
+extern s32 D_800F6D08;
