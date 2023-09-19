@@ -48,7 +48,9 @@ bool func_80023358(void* arg0, s32 arg1) {
     return true;
 }
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_8002338C);
+void func_8002338C(void* arg0, s32 arg1) {
+    func_80065F6C(arg1);
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800233AC);
 

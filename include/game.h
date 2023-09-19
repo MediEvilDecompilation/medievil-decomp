@@ -35,3 +35,4 @@ extern unkStruct_800F191C D_800F191C;
 extern bool func_8009B23C();
 extern void func_80099B84(s32);
 extern void func_80099BC8(s32);
+extern void func_80065F6C(s32);
