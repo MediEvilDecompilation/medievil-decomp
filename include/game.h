@@ -36,3 +36,4 @@ extern bool func_8009B23C();
 extern void func_80099B84(s32);
 extern void func_80099BC8(s32);
 extern void func_80065F6C(s32);
+extern void func_8005CEE0(s32);
