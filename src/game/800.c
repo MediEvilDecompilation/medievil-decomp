@@ -80,7 +80,25 @@ void func_8002348C(s32* arg0, s32 arg1, s32 arg2) {
 }
 #endif
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800234C4);
+void func_800234C4(s32* arg0, s32* arg1, s32 arg2) {
+    s32 temp_v0;
+    s32 var_a2;
+    s32* var_a0;
+    s32* var_a1;
+
+    var_a0 = arg0;
+    var_a1 = arg1;
+    var_a2 = arg2;
+    if (var_a2 != 0) {
+        do {
+            temp_v0 = *var_a1;
+            var_a1++;
+            var_a2 -= 4;
+            *var_a0 = temp_v0;
+            var_a0++;
+        } while (var_a2 != 0);
+    }
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800234EC);
 
