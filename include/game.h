@@ -32,3 +32,4 @@ extern void func_8002348C(s32*, s32, s32);
 extern s32 D_800EDFF8;
 extern s32 D_800EEE24;
 extern unkStruct_800F191C D_800F191C;
+extern bool func_8009B23C();
