@@ -58,7 +58,27 @@ void func_800233AC(void* arg0, s32 arg1) {
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800233CC);
 
+// Probably needs permuter for the IF condition
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002348C);
+#else
+void func_8002348C(s32* arg0, s32 arg1, s32 arg2) {
+    s32 temp_a1;
+    s32 var_a2;
+    s32* var_a0;
+
+    var_a0 = arg0;
+    var_a2 = arg2;
+    temp_a1 = arg1 & 0xFF;
+    if (var_a2 != 0) {
+        do {
+            *var_a0 = (temp_a1 << 0x18) | (temp_a1 << 0x10) | (temp_a1 << 8) | temp_a1;
+            var_a2 -= 4;
+            var_a0++;
+        } while (var_a2 != 0);
+    }
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800234C4);
 
