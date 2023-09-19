@@ -28,3 +28,7 @@ extern s32 D_800CDF5C;
 extern s32 D_800EE020;
 extern u16 D_800EEE5E;
 extern s32 D_800EEE64;
+extern void func_8002348C(s32*, s32, s32);
+extern s32 D_800EDFF8;
+extern s32 D_800EEE24;
+extern unkStruct_800F191C D_800F191C;

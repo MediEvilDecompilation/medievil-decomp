@@ -26,7 +26,13 @@ void func_80022B5C(void) {
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80022BBC);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80023008);
+void func_80023008(void) {
+    func_8002348C(&D_800EDFF8, 0, 0x28);
+    if (D_800EEE24 & 0x20) {
+        D_800F191C.unk4 = 0;
+        D_800F191C.unk5 = 0;
+    }
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80023058);
 
