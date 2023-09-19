@@ -138,7 +138,19 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800241E0);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800241F4);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80024674);
+void func_80024674(void) {
+    s32 (**var_s0)();
+    s32 (*temp_v0)();
+
+    var_s0 = &D_800EE030;
+    if (D_800EE030 != NULL) {
+        do {
+            temp_v0 = *var_s0;
+            var_s0++;
+            temp_v0();
+        } while (*var_s0 != NULL);
+    }
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800246C0);
 

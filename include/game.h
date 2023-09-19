@@ -47,3 +47,4 @@ extern void func_80069BB8();
 extern void func_800716FC();
 extern void func_80075A88();
 extern void func_8009BF68();
+extern s32* (*D_800EE030)();
