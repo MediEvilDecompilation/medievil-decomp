@@ -152,7 +152,19 @@ void func_80024674(void) {
     }
 }
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800246C0);
+void func_800246C0(void) {
+    void (**var_s0)();
+    void (*temp_v0)();
+
+    var_s0 = &D_800EE1BC;
+    if (D_800EE1BC != NULL) {
+        do {
+            temp_v0 = *var_s0;
+            var_s0++;
+            temp_v0();
+        } while (*var_s0 != NULL);
+    }
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002470C);
 
