@@ -4,7 +4,7 @@
 To help and join the discussion, please join our Discord Server here using this link: https://discord.gg/pBU8mD3k8z
 
 ## Setup
-Our project targets the US Retail PSX versions of MediEvil 1 and 2. TBA - Being added to the Wiki for a full guide but basic guide will be written here.
+Our project targets the US Retail PSX version of MediEvil 1. TBA - Being added to the Wiki for a full guide but basic guide will be written here.
 
 
 ## Progress
