@@ -20,7 +20,15 @@ INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB0E8);
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB0FC);
 
+// matches with gcc 2.7.2
+#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB110);
+#else
+s32 func_800BB110(void) {
+    D_800F6D08 = 1;
+    return 0;
+}
+#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/99ADC", func_800BB124);
 
