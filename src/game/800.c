@@ -1,6 +1,13 @@
 #include "game.h"
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80021CA4);
+s32 func_80021CA4(void) {
+    func_80099AFC();
+    func_80059CCC();
+    *(s32*)0x1F8000A0 = 0xF00DFACE;
+    *(s32*)0x1F8000B8 = 0xF00DFACE;
+    func_80059E58();
+    return 0;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80021CEC);
 

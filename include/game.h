@@ -20,3 +20,6 @@ extern s32* D_800EC928;
 extern s32 func_800B9A5C;
 extern s32 func_800B9AC8;
 extern s32 D_800F6D08;
+extern void func_80059CCC();
+extern void func_80059E58();
+extern void func_80099AFC();
