@@ -42,7 +42,11 @@ bool func_80023338(void) {
     return !!func_8009B23C();
 }
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80023358);
+bool func_80023358(void* arg0, s32 arg1) {
+    func_80099B84(arg1);
+    func_80099BC8(arg1);
+    return true;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002338C);
 
