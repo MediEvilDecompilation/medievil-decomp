@@ -32,7 +32,7 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B54D0);
 
 INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B55C8);
 
-s32 func_800B569C(s32 arg0,s32* arg1) {
+s32 func_800B569C(s32 arg0, s32* arg1) {
     func_800C1784(D_800ED0B0(), arg1);
 }
 
@@ -73,7 +73,6 @@ INCLUDE_ASM("asm/game/nonmatchings/91F8C", func_800B5878);
 u8* func_800B5878(u8* arg0, u8* arg1, s32 arg2) {
     u8* ret = NULL;
     u8* temp_v1;
-    
     if (arg0 != NULL) {
         temp_v1 = arg0;
         while (arg2 > 0) {

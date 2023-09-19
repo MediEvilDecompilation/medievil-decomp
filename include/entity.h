@@ -51,4 +51,3 @@ typedef struct Entity {
  */
 extern Entity* g_CurrentEntity;
 #endif
-
