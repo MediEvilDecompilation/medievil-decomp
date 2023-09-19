@@ -108,7 +108,19 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8002364C);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002395C);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80023A30);
+void func_80023A30(void) {
+    func_800646B4();
+    func_8004EC8C();
+    func_8002D0A0();
+    func_80040B5C();
+    func_80065904();
+    func_80075A88();
+    func_8004D3D8();
+    func_8005E314();
+    func_80069BB8();
+    func_800716FC();
+    func_8009BF68();
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80023AA0);
 
