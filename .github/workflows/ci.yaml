@@ -33,11 +33,11 @@ jobs:
         token: ${{ secrets.SECRETTOKEN }}
         path: secret-medievil-repo
 
-    - name: Where am I ?
-      run: ls && cd disk && ls
-
     - name: Get the dependency
       run: cp -r secret-medievil-repo/disk/* ./disk/
+
+    - name: Try going into overlays
+      run: cd ./disk/OVERLAYS && ls
 
     - name: Disassemble and extraction
       run: make extract -j $(nproc)
