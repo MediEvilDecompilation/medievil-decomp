@@ -32,11 +32,11 @@ jobs:
     - name: Get the dependency
       run: cp -r secret-medievil-repo/disk/* .
 
-    - name: Build Binaries
-      run: make all
-
     - name: Disassemble and extraction
       run: make extract -j $(nproc)
+
+    - name: Build Binaries
+      run: make all
 
 #    - name: Upload frogress
 #      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
