@@ -33,7 +33,7 @@ jobs:
         token: ${{ secrets.SECRETTOKEN }}
         path: secret-medievil-repo
     - name: Get the dependency
-      run: cp -r secret-medievil-repo/disk/* .
+      run: cp -r secret-medievil-repo/disk/medievil/* .
 
     - name: Disassemble and extraction
       run: make extract -j $(nproc)
