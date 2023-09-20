@@ -4,7 +4,7 @@
 #include "game.h"
 
 typedef struct CollisionResult {
-    /* 0x0 */ VECTOR point;
+            /* 0x0 */ VECTOR point;
     /* 0xC */ VECTOR unkC;
 } CollisionResult; // size = 0x18
 
