@@ -11,7 +11,7 @@ typedef struct CollisionResult {
 typedef struct ColliderData {
     /* 0x00 */ SVECTOR unk0[8];
     /* 0x40 */ SVECTOR unk40;
-    /* 0x48 */ Entity* unk48;
+    /* 0x48 */ struct Entity* unk48;
     /* 0x4C */ u16 unk4C;
     /* 0x4E */ u16 unk4E;
     /* 0x50 */ CollisionResult colRes;

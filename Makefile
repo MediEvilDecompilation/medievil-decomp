@@ -139,12 +139,11 @@ clean:
 	git clean -fdx config/
 	git clean -fdx build/
 
-
 format:
-	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.c")
-	clang-format -i $$(find $(SRC_DIR)/ -type f -name "*.h")
-	clang-format -i $$(find $(INCLUDE_DIR)/ -type f -name "*.h")
+	@./tools/format.py
 
+checkformat:
+	@./tools/check_format.sh
 
 .PHONY: all, clean, format, check, expected
 .PHONY: cr

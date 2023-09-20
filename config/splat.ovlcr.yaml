@@ -5,7 +5,7 @@ options:
   basename: ovlcr
   base_path: ..
   build_path: build/
-  target_path: disk/medievil/OVERLAYS/CR.BIN
+  target_path: disk/OVERLAYS/CR.BIN
   asm_path: asm/ovl/cr
   asset_path: assets/ovl/cr
   src_path: src/ovl/cr
