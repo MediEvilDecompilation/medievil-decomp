@@ -21,7 +21,7 @@ void func_80022B5C(void) {
     } else {
         var_v1 = 0;
     }
-func_800234C4(&D_800EE020, D_800CDF5C[var_v1], 0x10);
+    func_800234C4(&D_800EE020, D_800CDF5C[var_v1], 0x10);
 }
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80022BBC);
@@ -64,7 +64,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8002348C);
 #else
 void func_8002348C(s32* arg0, u8 arg1, s32 arg2) {
     s32 temp_a1 = arg1;
-    
+
     while (arg2 != 0) {
         *arg0 = (temp_a1 << 0x18) | (temp_a1 << 0x10) | (temp_a1 << 8) | temp_a1;
         arg2 -= 4;
@@ -125,10 +125,10 @@ void func_80024674(void) {
     s32 (*temp_v0)();
 
     var_s0 = &D_800EE030;
-        while (*var_s0 != NULL) {
-            temp_v0 = *var_s0;
-            var_s0++;
-            temp_v0();
+    while (*var_s0 != NULL) {
+        temp_v0 = *var_s0;
+        var_s0++;
+        temp_v0();
     }
 }
 
