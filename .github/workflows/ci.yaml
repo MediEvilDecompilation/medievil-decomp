@@ -30,7 +30,7 @@ jobs:
         token: ${{ secrets.SECRETTOKEN }}
         path: secret-medievil-repo
     - name: Get the dependency
-      run: cp /disk/medievil/* .
+      run: cp secret-medievil-repo/disk/* .
 
     - name: Setup
       run: make setup -j $(nproc)
