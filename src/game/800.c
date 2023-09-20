@@ -62,20 +62,13 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800233CC);
 #ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002348C);
 #else
-void func_8002348C(s32* arg0, s32 arg1, s32 arg2) {
-    s32 temp_a1;
-    s32 var_a2;
-    s32* var_a0;
-
-    var_a0 = arg0;
-    var_a2 = arg2;
-    temp_a1 = arg1 & 0xFF;
-    if (var_a2 != 0) {
-        do {
-            *var_a0 = (temp_a1 << 0x18) | (temp_a1 << 0x10) | (temp_a1 << 8) | temp_a1;
-            var_a2 -= 4;
-            var_a0++;
-        } while (var_a2 != 0);
+void func_8002348C(s32* arg0, u8 arg1, s32 arg2) {
+    s32 temp_a1 = arg1;
+    
+    while (arg2 != 0) {
+        *arg0 = (temp_a1 << 0x18) | (temp_a1 << 0x10) | (temp_a1 << 8) | temp_a1;
+        arg2 -= 4;
+        arg0++;
     }
 }
 #endif
