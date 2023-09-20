@@ -28,9 +28,9 @@ jobs:
       with:
         repository: ${{ secrets.SECRETREPO }}
         token: ${{ secrets.SECRETTOKEN }}
-        path: deps_repo
+        path: secret-medievil-repo
     - name: Get the dependency
-      run: cp deps_repo/medievil-decomp/* .
+      run: cp secret-medievil-repo/disk/medievil/* .
 
     - name: Setup
       run: make setup -j $(nproc)
