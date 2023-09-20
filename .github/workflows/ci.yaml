@@ -1,0 +1,50 @@
+name: Build
+
+# Build on every branch push, tag push, and pull request change:
+on: [push, pull_request_target]
+
+jobs:
+  build_repo:
+    name: Build repo
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Install package requirements
+      run: sudo apt-get install -y git make gcc-mipsel-linux-gnu binutils-mipsel-linux-gnu clang clang-format clang-tidy-14 python3 python3-pip
+
+    - name: Install Python dependencies
+      run: python3 -m pip install -r ./tools/requirements-python.txt
+
+    - name: Update submodules
+      run: git submodule update --init --recursive
+
+    - name: Get extra dependencies
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ secrets.SECRETREPO }}
+        token: ${{ secrets.SECRETTOKEN }}
+        path: secret-medievil-repo
+
+    - name: Get the dependency
+      run: cp -r secret-medievil-repo/disk/* ./disk/
+
+    - name: Try going into overlays
+      run: cd ./disk/OVERLAYS && ls
+
+    - name: Disassemble and extraction
+      run: make extract -j $(nproc)
+
+    - name: Build Binaries
+      run: make all
+
+#    - name: Upload frogress
+#      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+#      run: python3 tools/upload_frogress.py --apikey ${{ secrets.PROGRESS_API_KEY }}
