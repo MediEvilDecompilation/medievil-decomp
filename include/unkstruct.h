@@ -65,4 +65,10 @@ typedef struct unkStruct_SP_80010638 {
     /* 0x80 */ struct unkStruct_SP_80010638_unk80* unk80;
 } unkStruct_SP_80010638;
 
+typedef struct unkStruct_800F191C {
+    /* 0x00 */ char pad_0[0x4];
+    /* 0x04 */ s8 unk4;
+    /* 0x05 */ s8 unk5;
+} unkStruct_800F191C;
+
 #endif
