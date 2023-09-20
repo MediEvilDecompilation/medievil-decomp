@@ -5,7 +5,7 @@ options:
   basename: ovlch
   base_path: ..
   build_path: build/
-  target_path: disk/medievil/OVERLAYS/CH.BIN
+  target_path: disk/OVERLAYS/CH.BIN
   asm_path: asm/ovl/ch
   asset_path: assets/ovl/ch
   src_path: src/ovl/ch
