@@ -139,7 +139,6 @@ clean:
 	git clean -fdx config/
 	git clean -fdx build/
 
-
 format:
 	@./tools/format.py
 
