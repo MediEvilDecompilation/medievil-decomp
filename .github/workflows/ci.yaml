@@ -32,6 +32,10 @@ jobs:
         repository: ${{ secrets.SECRETREPO }}
         token: ${{ secrets.SECRETTOKEN }}
         path: secret-medievil-repo
+        
+    - name: Where am I ?
+      run: ls
+
     - name: Get the dependency
       run: cp -r secret-medievil-repo/disk/* ./disk/
 
