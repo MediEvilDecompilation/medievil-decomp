@@ -30,6 +30,7 @@ CONFIG_DIR      := config
 TOOLS_DIR       := tools
 
 # Tooling
+MAKE			:= make
 PYTHON          := python3
 SPLAT_DIR       := $(TOOLS_DIR)/splat
 SPLAT_APP       := $(SPLAT_DIR)/split.py
@@ -43,6 +44,7 @@ M2C_ARGS        := -P 4
 MASPSX_DIR      := $(TOOLS_DIR)/maspsx
 MASPSX_APP      := $(MASPSX_DIR)/maspsx.py
 MASPSX          := $(PYTHON) $(MASPSX_APP) --no-macro-inc --expand-div
+
 
 # List source files
 define list_src_files
@@ -69,7 +71,11 @@ define link
 endef
 
 
-######################### Build system #########################
+# Build
+init:
+	$(MAKE) clean
+	$(MAKE) extract -j
+	$(MAKE) all
 
 all: build check
 build: game overlays
@@ -104,15 +110,18 @@ ovl%_dirs:
 $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 	$(call link,ovl$*,$@)
 
+
 # Assembly
 $(BUILD_DIR)/%.s.o: %.s
 	$(AS) $(AS_FLAGS) -o $@ $<
 $(BUILD_DIR)/%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
 	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(MASPSX) | $(AS) $(AS_FLAGS) -o $@
 
+
 # Checksum
 check:
 	@sha1sum --check config/medievil.check.sha
+
 
 # asm-differ expected object files
 expected: check
@@ -123,29 +132,36 @@ expected: check
 
 # Assembly extraction
 extract: extract_ovlcr extract_ovlch extract_game
+
+## Game
 extract_game:
 	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.game.txt > $(CONFIG_DIR)/generated.symbols.game.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
 
+## Overlays
 extract_ovl%:
 	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.ovl$*.txt > $(CONFIG_DIR)/generated.symbols.ovl$*.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
 
-$(CONFIG_DIR)/generated.symbols.%.txt:
 
-
+# Cleaning
 clean:
-	git clean -fdx asm/
-	git clean -fdx config/
-	git clean -fdx build/
+	@git clean -fdx asm/
+	@git clean -fdx config/
+	@git clean -fdx build/
 
+
+# Formatting
 format:
 	@./tools/format.py
 
 checkformat:
 	@./tools/check_format.sh
 
-.PHONY: all, clean, format, check, expected
+
+# Phony
+.PHONY: init, all, clean, format, checkformat, check, expected
+.PHONY: list_src_files, list_o_files, link
 .PHONY: cr
 .PHONY: %_dirs
 .PHONY: extract, extract_%
