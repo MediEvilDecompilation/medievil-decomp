@@ -131,7 +131,12 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_ovlcr extract_ovlch extract_game
+extract: extract_main extract_game extract_ovlcr extract_ovlch 
+
+## Main
+extract_main:
+	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.main.txt > $(CONFIG_DIR)/generated.symbols.main.txt
+	$(SPLAT) $(CONFIG_DIR)/splat.main.yaml
 
 ## Game
 extract_game:
