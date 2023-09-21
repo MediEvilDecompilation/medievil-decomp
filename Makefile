@@ -72,13 +72,13 @@ endef
 
 
 # Build
+all: build check
+build: game overlays
+
 init:
 	$(MAKE) clean
 	$(MAKE) extract -j
 	$(MAKE) all
-
-all: build check
-build: game overlays
 
 ### Game Executables ###
 
