@@ -20,7 +20,6 @@ options:
 
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
- # asm_data_macro: dlabel
 
   section_order: [".rodata", ".text", ".data", ".bss"]
 
