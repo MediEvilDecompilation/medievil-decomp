@@ -3,18 +3,17 @@ sha1: 6e59ebb243fcb41152c29406c7f6d30629a1b8c9
 options:
   basename: scus_942.27
   target_path: disk/SCUS_942.27
-  base_path: .
+  base_path: ..
   platform: psx
   compiler: GCC
 
   asm_path: asm/main
   src_path: src/main
   build_path: build/
-  # create_asm_dependencies: True
-
-  ld_script_path: config/ld/main.ld
 
   find_file_boundaries: False
+  ld_script_path: config/ld/main.ld
+
   gp_value: 0x00000000
 
   o_as_suffix: True
@@ -25,7 +24,6 @@ options:
   asm_data_macro: dlabel
 
   section_order: [".rodata", ".text", ".data", ".bss"]
-  # auto_all_sections: [".data", ".rodata", ".bss"]
 
   symbol_addrs_path: config/symbols.main.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.main.txt
@@ -51,5 +49,6 @@ segments:
     bss_size: 0x0
     subsegments:
       - [0x800, rodata, 800]
-      - [0x64D0, asm, 64D0]
+      - [0x64D0, c, 64D0]
+      - [0x10750, data]
   - [0x21000]
