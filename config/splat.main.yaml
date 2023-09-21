@@ -16,12 +16,11 @@ options:
 
   gp_value: 0x00000000
 
-  o_as_suffix: True
   use_legacy_include_asm: False
 
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
-  asm_data_macro: dlabel
+ # asm_data_macro: dlabel
 
   section_order: [".rodata", ".text", ".data", ".bss"]
 

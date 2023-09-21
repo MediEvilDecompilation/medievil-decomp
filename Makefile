@@ -2,7 +2,9 @@
 .SECONDARY:
 
 # Binaries
+MAIN			:= main
 GAME			:= game
+OVL_CH 			:= ch
 OVL_CR          := cr
 
 # Compiler
@@ -73,7 +75,7 @@ endef
 
 # Build
 all: build check
-build: game overlays
+build: main game overlays
 
 init:
 	$(MAKE) clean
@@ -82,7 +84,12 @@ init:
 
 ### Game Executables ###
 
-# TODO: SCUS_942.27
+### This is SCUS_942.27
+main: main_dirs $(BUILD_DIR)/SCUS_942.27
+$(BUILD_DIR)/SCUS_942.27: $(BUILD_DIR)/$(MAIN).elf
+	$(OBJCOPY) -O binary $< $@
+$(BUILD_DIR)/$(MAIN).elf: $(call list_o_files,main)
+	$(call link,main,$@)
 
 game: game_dirs $(BUILD_DIR)/MEDIEVIL.EXE
 $(BUILD_DIR)/MEDIEVIL.EXE: $(BUILD_DIR)/$(GAME).elf
