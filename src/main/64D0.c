@@ -1,4 +1,5 @@
 #include "common.h"
+#include "main.h"
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B5CD0);
 
@@ -134,7 +135,9 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8610);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8620);
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8630);
+s32* func_801B8630(void) {
+    return &D_801D0004;
+}
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B863C);
 
