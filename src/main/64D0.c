@@ -351,7 +351,7 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801BE6EC);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801BE740);
 
-void func_801BE74C(unkstruct_801BE74C* arg0, s8 arg1, s32 arg2, s8 arg3) {
+void func_801BE74C(unkStruct_801BE74C* arg0, s8 arg1, s32 arg2, s8 arg3) {
     arg0->unk37 = arg1;
     arg0->unk2C = arg2;
     arg0->unk36 = arg3;
@@ -399,7 +399,10 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801BF4A0);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801BF508);
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801BF5FC);
+void func_801BF5FC(unkStruct_801BF5FC* arg0) {
+    arg0->unk38 = arg0->unk37;
+    arg0->unk37 = 0;
+}
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801BF60C);
 
