@@ -80,7 +80,9 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B79B4);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B7A40);
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B7AD8);
+u16 func_801B7AD8(u16* arg0) {
+    return *arg0;
+}
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B7AE4);
 
