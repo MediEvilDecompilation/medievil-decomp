@@ -1,4 +1,5 @@
 #include "common.h"
+#include "main.h"
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B5CD0);
 
@@ -80,7 +81,9 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B79B4);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B7A40);
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B7AD8);
+u16 func_801B7AD8(u16* arg0) {
+    return *arg0;
+}
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B7AE4);
 
@@ -126,13 +129,21 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B85A4);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B85CC);
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8600);
+u8 func_801B8600(void) {
+    return D_801CFFF8;
+}
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8610);
+u8 func_801B8610(void) {
+    return D_801D0008;
+}
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8620);
+u8 func_801B8620(void) {
+    return D_801D0009;
+}
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8630);
+s32* func_801B8630(void) {
+    return &D_801D0004;
+}
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B863C);
 
