@@ -133,7 +133,9 @@ INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8600);
 
 INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8610);
 
-INCLUDE_ASM("asm/main/nonmatchings/64D0", func_801B8620);
+u8 func_801B8620(void) {
+    return D_801D0009;
+}
 
 s32* func_801B8630(void) {
     return &D_801D0004;
