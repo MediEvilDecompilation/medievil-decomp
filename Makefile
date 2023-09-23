@@ -6,6 +6,7 @@ MAIN			:= main
 GAME			:= game
 OVL_CH 			:= ch
 OVL_CR          := cr
+OVL_DC		    := dc
 
 # Compiler
 CC1PSX          := ./bin/cc1-2.8.1
@@ -101,7 +102,7 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: ch cr 
+overlays: ch cr dc
 
 ch: ovlch_dirs $(BUILD_DIR)/CH.BIN
 $(BUILD_DIR)/CH.BIN: $(BUILD_DIR)/ovlch.elf
@@ -109,6 +110,10 @@ $(BUILD_DIR)/CH.BIN: $(BUILD_DIR)/ovlch.elf
 
 cr: ovlcr_dirs $(BUILD_DIR)/CR.BIN
 $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
+	$(OBJCOPY) -O binary $< $@
+
+dc: ovldc_dirs $(BUILD_DIR)/DC.BIN
+$(BUILD_DIR)/DC.BIN: $(BUILD_DIR)/ovldc.elf
 	$(OBJCOPY) -O binary $< $@
 
 ovl%_dirs:
@@ -138,7 +143,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_main extract_game extract_ovlcr extract_ovlch 
+extract: extract_main extract_game extract_ovlcr extract_ovlch extract_ovldc
 
 ## Main
 extract_main:

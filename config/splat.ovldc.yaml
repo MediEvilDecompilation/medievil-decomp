@@ -1,0 +1,42 @@
+name: DC.BIN
+sha1: 9451b3cfe3be9930ebee96e6790e2e6ec4aa22c8
+options:
+  platform: psx
+  basename: ovldc
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/DC.BIN
+  asm_path: asm/ovl/dc
+  asset_path: assets/ovl/dc
+  src_path: src/ovl/dc
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovldc.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovldc.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovldc.txt
+  ld_script_path: config/ld/ovldc.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  disasm_unknown: True
+
+segments:
+  - name: ovldc
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x1B0, c]
+      - [0xAF88, data]
+  - [0xDCFC]
