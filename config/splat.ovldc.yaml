@@ -28,6 +28,8 @@ options:
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
+  disasm_unknown: True
+
 segments:
   - name: ovldc
     type: code
@@ -35,4 +37,6 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x0, rodata]
-  - [0xDCFB]
+      - [0x1B0, c]
+      - [0xAF88, data]
+  - [0xDCFC]
