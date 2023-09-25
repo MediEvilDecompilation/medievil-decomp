@@ -7,6 +7,7 @@ GAME			:= game
 OVL_CH 			:= ch
 OVL_CR          := cr
 OVL_DC		    := dc
+OVL_GY1			:= gy1
 
 # Compiler
 CC1PSX          := ./bin/cc1-2.8.1
@@ -102,7 +103,7 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: ch cr dc
+overlays: ch cr dc gy1
 
 ch: ovlch_dirs $(BUILD_DIR)/CH.BIN
 $(BUILD_DIR)/CH.BIN: $(BUILD_DIR)/ovlch.elf
@@ -114,6 +115,10 @@ $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
 
 dc: ovldc_dirs $(BUILD_DIR)/DC.BIN
 $(BUILD_DIR)/DC.BIN: $(BUILD_DIR)/ovldc.elf
+	$(OBJCOPY) -O binary $< $@
+
+gy1: ovlgy1_dirs $(BUILD_DIR)/GY1.BIN
+$(BUILD_DIR)/GY1.BIN: $(BUILD_DIR)/ovlgy1.elf
 	$(OBJCOPY) -O binary $< $@
 
 ovl%_dirs:
@@ -139,11 +144,11 @@ check:
 expected: check
 	mkdir -p expected/build
 	rm -rf expected/build/
-	cp -r build/ expected/build/
+	cp -r build/expected/build/
 
 
 # Assembly extraction
-extract: extract_main extract_game extract_ovlcr extract_ovlch extract_ovldc
+extract: extract_main extract_game extract_ovlch extract_ovlcr extract_ovldc extract_ovlgy1
 
 ## Main
 extract_main:
@@ -179,6 +184,6 @@ checkformat:
 # Phony
 .PHONY: init, all, clean, format, checkformat, check, expected
 .PHONY: list_src_files, list_o_files, link
-.PHONY: cr
+.PHONY: main game ch cr dc gy1
 .PHONY: %_dirs
 .PHONY: extract, extract_%
