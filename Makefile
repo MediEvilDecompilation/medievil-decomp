@@ -127,7 +127,7 @@ gy2: ovlgy2_dirs $(BUILD_DIR)/GY2.BIN
 $(BUILD_DIR)/GY2.BIN: $(BUILD_DIR)/ovlgy2.elf
 	$(OBJCOPY) -O binary $< $@
 
-landmap: ovlgy2_dirs $(BUILD_DIR)/LANDMAP.BIN
+landmap: ovllandmap_dirs $(BUILD_DIR)/LANDMAP.BIN
 $(BUILD_DIR)/LANDMAP.BIN: $(BUILD_DIR)/ovllandmap.elf
 	$(OBJCOPY) -O binary $< $@
 
