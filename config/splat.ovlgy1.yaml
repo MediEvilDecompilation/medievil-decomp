@@ -37,4 +37,6 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x0, rodata]
-  - [0x4A67]
+      - [0x78, c]
+      - [0x2D90, data]
+  - [0x4A68]
