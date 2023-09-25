@@ -1,11 +1,11 @@
 name: LANDMAP.BIN
-sha1: 0de8a92afb3823b56b7818083ba75b9f6d98e015
+sha1: 021af3a550f58046073a75f6d4f9d0dd462748da
 options:
   platform: psx
   basename: ovllandmap
   base_path: ..
   build_path: build/
-  target_path: disk/OVERLAYS/landmap.BIN
+  target_path: disk/OVERLAYS/LANDMAP.BIN
   asm_path: asm/ovl/landmap
   asset_path: assets/ovl/landmap
   src_path: src/ovl/landmap
@@ -27,6 +27,8 @@ options:
 
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
+
+  disasm_unknown: True
 
 segments:
   - name: ovllandmap
