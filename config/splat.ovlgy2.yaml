@@ -1,0 +1,40 @@
+name: GY2.BIN
+sha1: 0de8a92afb3823b56b7818083ba75b9f6d98e015
+options:
+  platform: psx
+  basename: ovlgy2
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/GY2.BIN
+  asm_path: asm/ovl/gy2
+  asset_path: assets/ovl/gy2
+  src_path: src/ovl/gy2
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlgy2.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlgy2.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlgy2.txt
+  ld_script_path: config/ld/ovlgy2.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlgy2
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x128, c]
+      - [0x7458, data]
+  - [0xA060]
