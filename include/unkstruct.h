@@ -71,4 +71,10 @@ typedef struct unkStruct_800F191C {
     /* 0x05 */ s8 unk5;
 } unkStruct_800F191C;
 
+typedef struct unkStruct_800145B0 {
+    /* 0x00 */ char pad_0[0x10];
+    /* 0x10 */ s32 unk10;
+    /* 0x14 */ s32 unk14;
+} unkStruct_800145B0;
+
 #endif
