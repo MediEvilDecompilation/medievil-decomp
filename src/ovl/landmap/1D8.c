@@ -1,4 +1,4 @@
-#include "common.h"
+#include "landmap.h"
 
 INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_800101D8);
 
@@ -47,4 +47,11 @@ void func_80014460(void) {
 
 INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_80014468);
 
-INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_800145B0);
+bool func_800145B0(s32 arg0) {
+    if (arg0 == 0) {
+        D_80014F98->unk10 = 4;
+        D_80014F98->unk14 = 0;
+        func_8004E7B0(1, 1, 0x28);
+    }
+    return true;
+}
