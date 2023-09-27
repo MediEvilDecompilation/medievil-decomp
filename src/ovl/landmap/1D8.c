@@ -36,7 +36,15 @@ INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_80013BB8);
 
 INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_80013FB8);
 
-INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_80014348);
+void func_80014348(void) {
+    s32 temp0;
+    s32 temp1;
+
+    temp0 = D_80014F98->unkA96E;
+    D_80014F98->unkAB10->unk84 = (temp0 - D_80014F98->unk0) - 12;
+    temp1 = D_80014F98->unkA972;
+    D_80014F98->unkAB10->unk86 = (temp1 - D_80014F98->unk4) - 8;
+}
 
 INCLUDE_ASM("asm/ovl/landmap/nonmatchings/1D8", func_80014394);
 
