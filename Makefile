@@ -154,7 +154,7 @@ check:
 expected: check
 	mkdir -p expected/build
 	rm -rf expected/build/
-	cp -r build/expected/build/
+	cp -r build/ expected/build/
 
 
 # Assembly extraction
