@@ -1,31 +1,27 @@
 ![welcome banner](https://github.com/DerpPrincess/medievil-decomp/assets/36901824/fea5fe49-2253-4105-b35a-a68ddcd69ec8)
 
+[![Discord Channel][discord-badge]][discord] [![Contributors][contributors-badge]][contributors] 
+
+## Discord Server
+To help and contribute to the project, please join our Discord Server here using this link: https://discord.gg/pBU8mD3k8z
+
+## Become a Contributor
+This is a Work in Progress decompilation of the US [PSX](https://en.wikipedia.org/wiki/PlayStation_(console)) version of MediEvil 1. There will be a sister link for MediEvil 2 here later but currently our priorities are focused on MediEvil 1. 
+
+To get started, it is highly recommended that you both join the Discord server and also read our nicely written wiki page here: https://github.com/MediEvilDecompilation/medievil-decomp/wiki/Getting-Started
+
+This project uses a Git Rebase Workflow, so you will need to fork a copy of this project onto your personal GitHub account. A guide on here to use this workflow can be found here: https://github.com/MediEvilDecompilation/medievil-decomp/wiki/Git-Rebase-Workflow 
+
+It is highly recommended that you use Visual Studio Code as we have some nice features which will make the process smoother for you. You can find that information about that here: https://github.com/MediEvilDecompilation/medievil-decomp/wiki/Recommended-.vscode-settings
+
+## Progress
+TBA frogress goes here?
+
+## Useful Links
+Create wiki page for useful links add it here :)
+
 [contributors]: https://github.com/MediEvilDecompilation/medievil-decomp/graphs/contributors
 [contributors-badge]: https://img.shields.io/github/contributors/MediEvilDecompilation/medievil-decomp
 
 [discord]: https://discord.gg/pBU8mD3k8z
 [discord-badge]: https://img.shields.io/discord/1148969469918580807?color=%237289DA&logo=discord&logoColor=%23FFFFFF
-
-## Discord Server [![Discord Channel][discord-badge]][discord]
-To help and join the discussion, please join our Discord Server here using this link: https://discord.gg/pBU8mD3k8z
-
-## Become a Contributor [![Contributors][contributors-badge]][contributors] 
-Our project targets the US Retail PSX version of MediEvil 1. TBA - Being added to the Wiki for a full guide but basic guide will be written here.
-
-## Progress
-TBA 
-
-## How To
-TBA...
-
-To begin helping, you'll need to first understand the basics of Git version control system. This project uses a "Fork and Rebase" workflow, which means you'll need to click the fork button in the top right of the main repository page on GitHub to have the project in your own GitHub account. Make sure to fork ALL branches, not just main! You'll need to keep your version of the project up to date with this main project tree by having two remotes, yours and this one, hint: fetching all every time you begin working and before making Pull Requests and make changes on your fork instead of through a branch on the main repository like you may be used to. Additionally, since we're using a rebase workflow, you'll need to rebase your branch against a target branch (typically main tree's main or dev branch). More information concerning this will be provided at a later time. Finally, when making changes the changes will be squashed and merged into one commit with all your changes. Ideally, you'll make as little changes as needed for your function.
-
-So, this is a decomp project which means you'll be converting assembly code to C code. Information on how to do that will be added here soon.
-
-Note, for legal reasons, please do NOT commit copyrighted content (source code, game disks, rom/iso files, etc.) to this repository. This project works by decompiling retail disks through legal means, you MUST provide the real game to do this but said real game should not be committed to this repository!
-
-## Useful Links
-TBA
-
-## Etc.
-TBA test
