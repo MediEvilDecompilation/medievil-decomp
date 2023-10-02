@@ -1,11 +1,16 @@
 ![welcome banner](https://github.com/DerpPrincess/medievil-decomp/assets/36901824/fea5fe49-2253-4105-b35a-a68ddcd69ec8)
 
-## Discord Server
+[contributors]: https://github.com/MediEvilDecompilation/medievil-decomp/graphs/contributors
+[contributors-badge]: https://img.shields.io/github/contributors/MediEvilDecompilation/medievil-decomp
+
+[discord]: https://discord.gg/pBU8mD3k8z
+[discord-badge]: https://img.shields.io/discord/1148969469918580807?color=%237289DA&logo=discord&logoColor=%23FFFFFF
+
+## Discord Server [![Discord Channel][discord-badge]][discord]
 To help and join the discussion, please join our Discord Server here using this link: https://discord.gg/pBU8mD3k8z
 
-## Setup
+## Become a Contributor [![Contributors][contributors-badge]][contributors] 
 Our project targets the US Retail PSX version of MediEvil 1. TBA - Being added to the Wiki for a full guide but basic guide will be written here.
-
 
 ## Progress
 TBA 
