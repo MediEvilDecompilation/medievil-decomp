@@ -27,7 +27,6 @@ options:
 
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
-  disasm_unknown: True
 
 segments:
   - name: ovlsf
