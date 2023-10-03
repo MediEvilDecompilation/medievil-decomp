@@ -18,7 +18,7 @@ It is highly recommended that you use Visual Studio Code as we have some nice fe
 TBA frogress goes here?
 
 ## Useful Links
-Create wiki page for useful links add it here :)
+To see a set of useful links which can help you in the decompilation process click here: https://github.com/MediEvilDecompilation/medievil-decomp/wiki/Useful-Links
 
 [contributors]: https://github.com/MediEvilDecompilation/medievil-decomp/graphs/contributors
 [contributors-badge]: https://img.shields.io/github/contributors/MediEvilDecompilation/medievil-decomp
