@@ -137,7 +137,7 @@ sf: ovlsf_dirs $(BUILD_DIR)/SF.BIN
 $(BUILD_DIR)/SF.BIN: $(BUILD_DIR)/ovlsf.elf
 	$(OBJCOPY) -O binary $< $@
 
-sv: ovlsf_dirs $(BUILD_DIR)/SV.BIN
+sv: ovlsv_dirs $(BUILD_DIR)/SV.BIN
 $(BUILD_DIR)/SV.BIN: $(BUILD_DIR)/ovlsv.elf
 	$(OBJCOPY) -O binary $< $@
 
