@@ -27,6 +27,7 @@ options:
 
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
+  disasm_unknown: True
 
 segments:
   - name: ovlsf
@@ -35,4 +36,6 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x0, rodata]
+      - [0x1F8, c]
+      - [0x9500, data]
   - [0xCE90]
