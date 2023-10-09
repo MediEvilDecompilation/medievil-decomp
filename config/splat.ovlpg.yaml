@@ -28,8 +28,6 @@ options:
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-  disasm_unknown: true
-
 segments:
   - name: ovlpg
     type: code
@@ -37,4 +35,6 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x0, rodata]
+      - [0xC8, c]
+      - [0x7310, data]
   - [0x94E0]
