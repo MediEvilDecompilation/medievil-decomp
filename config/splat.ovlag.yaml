@@ -1,0 +1,40 @@
+name: AG.BIN
+sha1: 06bf5b6b52e1d4242b406d1fe4684b331c0d5354
+options:
+  platform: psx
+  basename: ovlag
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/AG.BIN
+  asm_path: asm/ovl/ag
+  asset_path: assets/ovl/ag
+  src_path: src/ovl/ag
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlag.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlag.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlag.txt
+  ld_script_path: config/ld/ovlag.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlag
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x118, c]
+      - [0x6820, data]
+  - [0x94CC]
