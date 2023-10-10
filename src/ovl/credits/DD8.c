@@ -25,6 +25,12 @@ bool func_80012214(void) {
     return true;
 }
 
-INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_80012234);
+bool func_80012234(void) {
+    s32 temp_v0 = D_800122A0->unk84 + 8;
+
+    D_800122A0->unk84 = temp_v0;
+    D_800122A0->unk88 = temp_v0;
+    return true;
+}
 
 INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_8001225C);
