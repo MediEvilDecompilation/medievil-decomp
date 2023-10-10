@@ -1,0 +1,38 @@
+name: AC.BIN
+sha1: fd900ccbc8940620563e60cb47c7124908fbbce0
+options:
+  platform: psx
+  basename: ovlac
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/AC.BIN
+  asm_path: asm/ovl/ac
+  asset_path: assets/ovl/ac
+  src_path: src/ovl/ac
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlac.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlac.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlac.txt
+  ld_script_path: config/ld/ovlac.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlac
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+  - [0xCB60]

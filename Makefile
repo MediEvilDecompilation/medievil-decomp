@@ -4,6 +4,7 @@
 # Binaries
 MAIN			:= main
 GAME			:= game
+OVL_AC			:= ac
 OVL_AG			:= ag
 OVL_CH 			:= ch
 OVL_CR          := cr
@@ -109,7 +110,11 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: ag ch cr dc gy1 gy2 landmap pg sf sv
+overlays: ac ag ch cr dc gy1 gy2 landmap pg sf sv
+
+ac: ovlac_dirs $(BUILD_DIR)/AC.BIN
+$(BUILD_DIR)/AC.BIN: $(BUILD_DIR)/ovlac.elf
+	$(OBJCOPY) -O binary $< $@
 
 ag: ovlag_dirs $(BUILD_DIR)/AG.BIN
 $(BUILD_DIR)/AG.BIN: $(BUILD_DIR)/ovlag.elf
@@ -214,6 +219,6 @@ checkformat:
 # Phony
 .PHONY: init, all, clean, format, checkformat, check, expected
 .PHONY: list_src_files, list_o_files, link
-.PHONY: main game ag ch cr dc gy1 gy2 landmap pg sf sv
+.PHONY: main game ac ag ch cr dc gy1 gy2 landmap pg sf sv
 .PHONY: %_dirs
 .PHONY: extract, extract_%
