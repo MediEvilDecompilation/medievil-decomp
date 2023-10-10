@@ -6,9 +6,10 @@ MAIN			:= main
 GAME			:= game
 OVL_AC			:= ac
 OVL_AG			:= ag
-OVL_CH 			:= ch
-OVL_CR          := cr
-OVL_DC		    := dc
+OVL_CH			:= ch
+OVL_CR			:= cr
+OVL_CREDITS		:= credits
+OVL_DC			:= dc
 OVL_GY1			:= gy1
 OVL_GY2			:= gy2
 OVL_LANDMAP		:= landmap
@@ -110,7 +111,7 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: ac ag ch cr dc gy1 gy2 landmap pg sf sv
+overlays: ac ag ch cr credits dc gy1 gy2 landmap pg sf sv
 
 ac: ovlac_dirs $(BUILD_DIR)/AC.BIN
 $(BUILD_DIR)/AC.BIN: $(BUILD_DIR)/ovlac.elf
@@ -126,6 +127,10 @@ $(BUILD_DIR)/CH.BIN: $(BUILD_DIR)/ovlch.elf
 
 cr: ovlcr_dirs $(BUILD_DIR)/CR.BIN
 $(BUILD_DIR)/CR.BIN: $(BUILD_DIR)/ovlcr.elf
+	$(OBJCOPY) -O binary $< $@
+
+credits: ovlcredits_dirs $(BUILD_DIR)/CREDITS.BIN
+$(BUILD_DIR)/CREDITS.BIN: $(BUILD_DIR)/ovlcredits.elf
 	$(OBJCOPY) -O binary $< $@
 
 dc: ovldc_dirs $(BUILD_DIR)/DC.BIN
@@ -183,7 +188,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlch extract_ovlcr extract_ovldc extract_ovlgy1 extract_ovlgy2 extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv
+extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlch extract_ovlcr extract_ovlcredits extract_ovldc extract_ovlgy1 extract_ovlgy2 extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv
 
 ## Main
 extract_main:
@@ -219,6 +224,6 @@ checkformat:
 # Phony
 .PHONY: init, all, clean, format, checkformat, check, expected
 .PHONY: list_src_files, list_o_files, link
-.PHONY: main game ac ag ch cr dc gy1 gy2 landmap pg sf sv
+.PHONY: main game ac ag ch cr credits dc gy1 gy2 landmap pg sf sv
 .PHONY: %_dirs
 .PHONY: extract, extract_%
