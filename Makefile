@@ -183,7 +183,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_main extract_game extract_ovlag extract_ovlch extract_ovlcr extract_ovldc extract_ovlgy1 extract_ovlgy2 extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv
+extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlch extract_ovlcr extract_ovldc extract_ovlgy1 extract_ovlgy2 extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv
 
 ## Main
 extract_main:
