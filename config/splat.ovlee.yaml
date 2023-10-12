@@ -1,0 +1,40 @@
+name: EE.BIN
+sha1: e299c0820fe47fb99bc706f54b5dff1429a5bfcc
+options:
+  platform: psx
+  basename: ovlee
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/EE.BIN
+  asm_path: asm/ovl/ee
+  asset_path: assets/ovl/ee
+  src_path: src/ovl/ee
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlee.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlee.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlee.txt
+  ld_script_path: config/ld/ovlee.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlee
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x1B0, c]
+      - [0xAF88, data]
+  - [0xDCFC]
