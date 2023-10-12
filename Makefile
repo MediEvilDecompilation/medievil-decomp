@@ -11,6 +11,7 @@ OVL_CH			:= ch
 OVL_CR			:= cr
 OVL_CREDITS		:= credits
 OVL_DC			:= dc
+OVL_EE			:= ee
 OVL_GG			:= gg
 OVL_GY1			:= gy1
 OVL_GY2			:= gy2
@@ -114,7 +115,7 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: ac ag cc ch cr credits dc gg gy1 gy2 landmap pg sf sv zl
+overlays: ac ag cc ch cr credits dc ee gg gy1 gy2 landmap pg sf sv zl
 
 ac: ovlac_dirs $(BUILD_DIR)/AC.BIN
 $(BUILD_DIR)/AC.BIN: $(BUILD_DIR)/ovlac.elf
@@ -142,6 +143,10 @@ $(BUILD_DIR)/CREDITS.BIN: $(BUILD_DIR)/ovlcredits.elf
 
 dc: ovldc_dirs $(BUILD_DIR)/DC.BIN
 $(BUILD_DIR)/DC.BIN: $(BUILD_DIR)/ovldc.elf
+	$(OBJCOPY) -O binary $< $@
+
+ee: ovlee_dirs $(BUILD_DIR)/EE.BIN
+$(BUILD_DIR)/EE.BIN: $(BUILD_DIR)/ovlee.elf
 	$(OBJCOPY) -O binary $< $@
 
 gg: ovlgg_dirs $(BUILD_DIR)/GG.BIN
@@ -203,7 +208,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlcc extract_ovlch extract_ovlcr extract_ovlcredits extract_ovldc extract_ovlgg extract_ovlgy1 extract_ovlgy2 extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv extract_ovlzl
+extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlcc extract_ovlch extract_ovlcr extract_ovlcredits extract_ovldc extract_ovlee extract_ovlgg extract_ovlgy1 extract_ovlgy2 extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv extract_ovlzl
 
 ## Main
 extract_main:
@@ -239,6 +244,6 @@ checkformat:
 # Phony
 .PHONY: init, all, clean, format, checkformat, check, expected
 .PHONY: list_src_files, list_o_files, link
-.PHONY: main game ac ag cc ch cr credits dc gg gy1 gy2 landmap pg sf sv zl
+.PHONY: main game ac ag cc ch cr credits dc ee gg gy1 gy2 landmap pg sf sv zl
 .PHONY: %_dirs
 .PHONY: extract, extract_%
