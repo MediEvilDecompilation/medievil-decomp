@@ -1,0 +1,40 @@
+name: ZL.BIN
+sha1: 37bbf2910f86cb3629d9dac3576017a9aac63433
+options:
+  platform: psx
+  basename: ovlzl
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/ZL.BIN
+  asm_path: asm/ovl/zl
+  asset_path: assets/ovl/zl
+  src_path: src/ovl/zl
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlzl.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlzl.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlzl.txt
+  ld_script_path: config/ld/ovlzl.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlzl
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0xD8, c]
+      - [0x72D0, data]
+  - [0xD214]
