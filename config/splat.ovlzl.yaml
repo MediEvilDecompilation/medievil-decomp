@@ -34,5 +34,7 @@ segments:
     start: 0x00000000
     vram: 0x80010000
     subsegments:
-      - [0x0, asm]
+      - [0x0, rodata]
+      - [0x1A0, c]
+      - [0xC838, data]
   - [0x11204]
