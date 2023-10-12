@@ -1,19 +1,19 @@
-name: AG.BIN
+name: GG.BIN
 sha1: fe4dbcaec959c190509508f17f3876640d8279f5
 options:
   platform: psx
-  basename: ovlag
+  basename: ovlgg
   base_path: ..
   build_path: build/
-  target_path: disk/OVERLAYS/AG.BIN
-  asm_path: asm/ovl/ag
-  asset_path: assets/ovl/ag
-  src_path: src/ovl/ag
+  target_path: disk/OVERLAYS/GG.BIN
+  asm_path: asm/ovl/gg
+  asset_path: assets/ovl/gg
+  src_path: src/ovl/gg
   compiler: GCC
-  symbol_addrs_path: config/symbols.ovlag.txt
-  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlag.txt
-  undefined_syms_auto_path: config/undefined_syms_auto.ovlag.txt
-  ld_script_path: config/ld/ovlag.ld
+  symbol_addrs_path: config/symbols.ovlgg.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlgg.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlgg.txt
+  ld_script_path: config/ld/ovlgg.ld
   find_file_boundaries: yes
   use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
@@ -29,14 +29,12 @@ options:
   data_string_guesser_level: 2
 
 segments:
-  - name: ovlag
+  - name: ovlgg
     type: code
     start: 0x00000000
     vram: 0x80010000
     subsegments:
       - [0x0, rodata]
-      - [0xA0, rodata]
-      - [0x100, rodata]
-      - [0x118, c]
-      - [0x6820, data]
-  - [0x94CC]
+      - [0xA4, c]
+      - [0x1A48, data]
+  - [0x32C0]
