@@ -6,9 +6,9 @@ options:
   base_path: ..
   build_path: build/
   target_path: disk/OVERLAYS/CC.BIN
-  asm_path: asm/ovl/dc
-  asset_path: assets/ovl/dc
-  src_path: src/ovl/dc
+  asm_path: asm/ovl/cc
+  asset_path: assets/ovl/cc
+  src_path: src/ovl/cc
   compiler: GCC
   symbol_addrs_path: config/symbols.ovlcc.txt
   undefined_funcs_auto_path: config/undefined_funcs_auto.ovlcc.txt
