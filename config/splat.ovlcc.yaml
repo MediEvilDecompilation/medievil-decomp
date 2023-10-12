@@ -1,0 +1,40 @@
+name: CC.BIN
+sha1: 554cee5a0a2b2160de8818513aecc5f67db219f5
+options:
+  platform: psx
+  basename: ovlcc
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/CC.BIN
+  asm_path: asm/ovl/cc
+  asset_path: assets/ovl/cc
+  src_path: src/ovl/cc
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlcc.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlcc.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlcc.txt
+  ld_script_path: config/ld/ovlcc.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlcc
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x160, c]
+      - [0x7198, data]
+  - [0xA0A0]
