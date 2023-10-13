@@ -98,7 +98,7 @@ init:
 
 ### Game Executables ###
 
-### This is SCUS_942.27
+# This is SCUS_942.27
 main: main_dirs $(BUILD_DIR)/SCUS_942.27
 $(BUILD_DIR)/SCUS_942.27: $(BUILD_DIR)/$(MAIN).elf
 	$(OBJCOPY) -O binary $< $@
