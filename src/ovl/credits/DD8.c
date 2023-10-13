@@ -10,6 +10,7 @@ void func_800116A8(s32 arg0) {
     CreditsStruct* var_a1;
     s32 var_a2;
 
+    //! FAKE:
     var_a1 = (s32)D_800122A0 + 0x9C;
 
     D_800122A0->unk80 = arg0;
@@ -21,8 +22,9 @@ void func_800116A8(s32 arg0) {
     D_800122A0->unk110 = 0;
     D_800122A0->unk114 = 0;
 
-    for (var_a2 = 0x27; var_a2 >= 0; var_a2--) {
+    for (var_a2 = 0; var_a2 < 40; var_a2++) {
         var_a1->unk118 = 0;
+        //! FAKE:
         var_a1 = (s32)var_a1 - 4;
     }
 }

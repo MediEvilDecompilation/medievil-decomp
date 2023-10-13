@@ -93,7 +93,7 @@ build: main game overlays
 
 init:
 	$(MAKE) clean
-	$(MAKE) extract -j
+	$(MAKE) extract -j $(nproc)
 	$(MAKE) all
 
 ### Game Executables ###
@@ -235,10 +235,10 @@ clean:
 
 # Formatting
 format:
-	@./tools/format.py
+	@./tools/format.py -j $(nproc)
 
 checkformat:
-	@./tools/check_format.sh
+	@./tools/check_format.sh -j $(nproc)
 
 
 # Phony
