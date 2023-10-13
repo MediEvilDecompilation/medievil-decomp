@@ -6,7 +6,26 @@ INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_80011298);
 
 INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_80011590);
 
-INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_800116A8);
+void func_800116A8(s32 arg0) {
+    CreditsStruct* var_a1;
+    s32 var_a2;
+
+    var_a1 = (s32)D_800122A0 + 0x9C;
+
+    D_800122A0->unk80 = arg0;
+    D_800122A0->unk84 = arg0;
+    D_800122A0->unk7C = 0;
+    D_800122A0->unk90 = 0;
+    D_800122A0->unk8C = 1;
+    D_800122A0->unk10C = 0;
+    D_800122A0->unk110 = 0;
+    D_800122A0->unk114 = 0;
+
+    for (var_a2 = 0x27; var_a2 >= 0; var_a2--) {
+        var_a1->unk118 = 0;
+        var_a1 = (s32)var_a1 - 4;
+    }
+}
 
 INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_800116F4);
 
