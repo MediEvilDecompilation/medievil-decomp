@@ -1,0 +1,40 @@
+name: HH.BIN
+sha1: 991b047edbbc62bd6532be146d9401a60f65defc
+options:
+  platform: psx
+  basename: ovlhh
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/HH.BIN
+  asm_path: asm/ovl/hh
+  asset_path: assets/ovl/hh
+  src_path: src/ovl/hh
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlhh.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlhh.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlhh.txt
+  ld_script_path: config/ld/ovlhh.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: ovlhh
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x88, c]
+      - [0x4AB0, data]
+  - [0xC1EC]
