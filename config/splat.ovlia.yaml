@@ -2,7 +2,7 @@ name: IA.BIN
 sha1: 4584571a6ff512a7418432f29de8146bef4e51f8
 options:
   platform: psx
-  basename: ovls
+  basename: ovlia
   base_path: ..
   build_path: build/
   target_path: disk/OVERLAYS/IA.BIN
@@ -36,5 +36,6 @@ segments:
     start: 0x00000000
     vram: 0x80010000
     subsegments:
-      - [0x0, asm]
+      - [0x0, rodata]
+      - [0xB8, asm]
   - [0x57F0]
