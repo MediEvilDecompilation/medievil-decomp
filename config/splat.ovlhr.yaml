@@ -1,0 +1,40 @@
+name: HR.BIN
+sha1: 7ee70db9b39e3bea66cf8934911880b52dd91289
+options:
+  platform: psx
+  basename: ovls
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/HR.BIN
+  asm_path: asm/ovl/hr
+  asset_path: assets/ovl/hr
+  src_path: src/ovl/hr
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlhr.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlhr.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlhr.txt
+  ld_script_path: config/ld/ovlhr.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  disasm_unknown: true
+
+segments:
+  - name: ovlhr
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, asm]
+  - [0xC174]
