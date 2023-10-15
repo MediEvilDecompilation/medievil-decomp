@@ -2,7 +2,7 @@ name: HR.BIN
 sha1: 7ee70db9b39e3bea66cf8934911880b52dd91289
 options:
   platform: psx
-  basename: ovls
+  basename: ovlhr
   base_path: ..
   build_path: build/
   target_path: disk/OVERLAYS/HR.BIN

@@ -2,7 +2,7 @@ name: GS.BIN
 sha1: d0e17f3e271e98c4b9ac0ff26e44a529a1f67182
 options:
   platform: psx
-  basename: ovls
+  basename: ovlgs
   base_path: ..
   build_path: build/
   target_path: disk/OVERLAYS/GS.BIN
