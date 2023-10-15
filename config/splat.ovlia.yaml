@@ -1,0 +1,40 @@
+name: IA.BIN
+sha1: 4584571a6ff512a7418432f29de8146bef4e51f8
+options:
+  platform: psx
+  basename: ovls
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/IA.BIN
+  asm_path: asm/ovl/ia
+  asset_path: assets/ovl/ia
+  src_path: src/ovl/ia
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlia.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlia.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlia.txt
+  ld_script_path: config/ld/ovlia.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  disasm_unknown: true
+
+segments:
+  - name: ovlia
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, asm]
+  - [0x57F0]
