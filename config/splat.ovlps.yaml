@@ -1,0 +1,40 @@
+name: PS.BIN
+sha1: 92c871bee68855dad4229da6d15fbaaa00b802cf
+options:
+  platform: psx
+  basename: ovlps
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/PS.BIN
+  asm_path: asm/ovl/ps
+  asset_path: assets/ovl/ps
+  src_path: src/ovl/ps
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlps.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlps.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlps.txt
+  ld_script_path: config/ld/ovlps.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+  
+segments:
+  - name: ovlps
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+      - [0x198, c]
+      - [0xA5B8, data]
+  - [0xCF24]
