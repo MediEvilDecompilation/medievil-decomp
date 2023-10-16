@@ -28,13 +28,13 @@ options:
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-  disasm_unknown: true
-
 segments:
   - name: ovltd
     type: code
     start: 0x00000000
     vram: 0x80010000
     subsegments:
-      - [0x0, asm]
+      - [0x0, rodata]
+      - [0x190, c]
+      - [0x9C40, data]
   - [0xD560]
