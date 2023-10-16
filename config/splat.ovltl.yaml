@@ -1,0 +1,40 @@
+name: TL.BIN
+sha1: b511b56db83862ed017fc72cdbb833f2e06de58e
+options:
+  platform: psx
+  basename: ovltl
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/TL.BIN
+  asm_path: asm/ovl/tl
+  asset_path: assets/ovl/tl
+  src_path: src/ovl/tl
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovltl.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovltl.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovltl.txt
+  ld_script_path: config/ld/ovltl.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  disasm_unknown: true
+
+segments:
+  - name: ovltl
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, asm]
+  - [0x8F24]
