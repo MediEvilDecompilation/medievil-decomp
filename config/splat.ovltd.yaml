@@ -1,0 +1,40 @@
+name: TD.BIN
+sha1: c958769c122aaf82080a696b6ffd490bfe7663c2
+options:
+  platform: psx
+  basename: ovltd
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/TD.BIN
+  asm_path: asm/ovl/td
+  asset_path: assets/ovl/td
+  src_path: src/ovl/td
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovltd.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovltd.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovltd.txt
+  ld_script_path: config/ld/ovltd.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+  disasm_unknown: true
+
+segments:
+  - name: ovltd
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, asm]
+  - [0xD560]
