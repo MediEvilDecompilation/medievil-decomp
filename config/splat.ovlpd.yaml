@@ -1,0 +1,39 @@
+name: PD.BIN
+sha1: 97825ec5456d6aa6dfa839c2bb5da5e875e7c165
+options:
+  platform: psx
+  basename: ovlpd
+  base_path: ..
+  build_path: build/
+  target_path: disk/OVERLAYS/PD.BIN
+  asm_path: asm/ovl/pd
+  asset_path: assets/ovl/pd
+  src_path: src/ovl/pd
+  compiler: GCC
+  symbol_addrs_path: config/symbols.ovlpd.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.ovlpd.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.ovlpd.txt
+  ld_script_path: config/ld/ovlpd.ld
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+  asm_jtbl_label_macro: jlabel
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+
+  subalign: 2
+
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+
+segments:
+  - name: ovlpd
+    type: code
+    start: 0x00000000
+    vram: 0x80010000
+    subsegments:
+      - [0x0, rodata]
+  - [0x5CD4]
