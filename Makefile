@@ -2,8 +2,8 @@
 .SECONDARY:
 
 # Binaries
-MAIN			:= main # SCUS_942.27
-GAME			:= game # MEDIEVIL.EXE
+MAIN			:= main
+GAME			:= game
 OVL_AC			:= ac # The Ant Caves
 OVL_AG			:= ag # The Asylum Grounds
 OVL_CC			:= cc # The Crystal Caves
@@ -107,6 +107,8 @@ init:
 	$(MAKE) all
 
 ### Game Executables ###
+
+# This is SCUS_942.27
 main: main_dirs $(BUILD_DIR)/SCUS_942.27
 $(BUILD_DIR)/SCUS_942.27: $(BUILD_DIR)/$(MAIN).elf
 	$(OBJCOPY) -O binary $< $@
