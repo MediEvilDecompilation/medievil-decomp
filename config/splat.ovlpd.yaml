@@ -28,7 +28,6 @@ options:
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-
 segments:
   - name: ovlpd
     type: code
@@ -36,4 +35,6 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x0, rodata]
+      - [0x48, c]
+      - [0x35E0, data]
   - [0x5CD4]
