@@ -22,6 +22,7 @@ OVL_HR 			:= hr
 OVL_IA			:= ia
 OLV_LA			:= la
 OVL_LANDMAP		:= landmap
+OVL_PD			:= pd
 OVL_PG			:= pg
 OVL_SF			:= sf
 OVL_SV			:= sv
@@ -121,7 +122,7 @@ $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 ### Overlays ###
-overlays: ac ag cc ch cr credits dc ee eh gg gs gy1 gy2 hh hr ia la landmap pg sf sv zl
+overlays: ac ag cc ch cr credits dc ee eh gg gs gy1 gy2 hh hr ia la landmap pd pg sf sv zl
 
 ac: ovlac_dirs $(BUILD_DIR)/AC.BIN
 $(BUILD_DIR)/AC.BIN: $(BUILD_DIR)/ovlac.elf
@@ -195,6 +196,10 @@ landmap: ovllandmap_dirs $(BUILD_DIR)/LANDMAP.BIN
 $(BUILD_DIR)/LANDMAP.BIN: $(BUILD_DIR)/ovllandmap.elf
 	$(OBJCOPY) -O binary $< $@
 
+pd: ovlpd_dirs $(BUILD_DIR)/PD.BIN
+$(BUILD_DIR)/PD.BIN: $(BUILD_DIR)/ovlpd.elf
+	$(OBJCOPY) -O binary $< $@
+
 pg: ovlpg_dirs $(BUILD_DIR)/PG.BIN
 $(BUILD_DIR)/PG.BIN: $(BUILD_DIR)/ovlpg.elf
 	$(OBJCOPY) -O binary $< $@
@@ -238,7 +243,7 @@ expected: check
 
 
 # Assembly extraction
-extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlcc extract_ovlch extract_ovlcr extract_ovlcredits extract_ovldc extract_ovlee extract_ovleh extract_ovlgg extract_ovlgs extract_ovlgy1 extract_ovlgy2 extract_ovlhh extract_ovlhr extract_ovlia extract_ovlla extract_ovllandmap extract_ovlpg extract_ovlsf extract_ovlsv extract_ovlzl
+extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlcc extract_ovlch extract_ovlcr extract_ovlcredits extract_ovldc extract_ovlee extract_ovleh extract_ovlgg extract_ovlgs extract_ovlgy1 extract_ovlgy2 extract_ovlhh extract_ovlhr extract_ovlia extract_ovlla extract_ovllandmap extract_ovlpd extract_ovlpg extract_ovlsf extract_ovlsv extract_ovlzl
 
 ## Main
 extract_main:
@@ -274,6 +279,6 @@ checkformat:
 # Phony
 .PHONY: init, all, clean, format, checkformat, check, expected
 .PHONY: list_src_files, list_o_files, link
-.PHONY: main game ac ag cc ch cr credits dc ee eh gg gs gy1 gy2 hh hr ia la landmap pg sf sv zl
+.PHONY: main game ac ag cc ch cr credits dc ee eh gg gs gy1 gy2 hh hr ia la landmap pd pg sf sv zl
 .PHONY: %_dirs
 .PHONY: extract, extract_%
