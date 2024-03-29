@@ -2867,7 +2867,9 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8C80);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8DC0);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8E94);
+void func_800A8E94(void) {
+    func_800A3BE0();
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8EB4);
 
@@ -2885,7 +2887,9 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A9280);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92B4);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92E4);
+u16 func_800A92E4(void) {
+    return D_800EA27E;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92F4);
 
