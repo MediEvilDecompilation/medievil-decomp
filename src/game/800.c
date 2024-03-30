@@ -2906,4 +2906,17 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A96FC);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A979C);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800A9814);
+void func_800A9814(s32* arg0, s32 arg1) {
+    s32 var_v0;
+    s32* var_a0;
+
+    var_a0 = arg0;
+    var_v0 = arg1 - 1;
+    if (arg1 != 0) {
+        do {
+            *var_a0 = 0;
+            var_v0 -= 1;
+            var_a0 += 1;
+        } while (var_v0 != -1);
+    }
+}
