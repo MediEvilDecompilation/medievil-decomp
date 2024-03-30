@@ -12,6 +12,8 @@ extern s32 func_800C0ED8(s32, s32, s32);
 extern s32 (*D_800ED0B0)();
 extern s32 func_800C1784(s32, s32);
 
+extern u16 D_800EA27E;
+
 extern s32 func_800A9220(s32, s32*);
 extern s32 func_800B9AF4(s32*, s32);
 extern s32 D_800EC904;
@@ -49,3 +51,6 @@ extern void func_80075A88();
 extern void func_8009BF68();
 extern s32* (*D_800EE030)();
 extern void (*D_800EE1BC)();
+extern void func_80048214();
+extern void func_800A3BE0();
+
