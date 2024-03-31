@@ -506,7 +506,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8003C2B0);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8003C344);
 
-void func_8003C3F4(struct000* arg0) {
+void func_8003C3F4(unkStruct_8003C3F4* arg0) {
     arg0->unk18 = 0;
     func_800A42B4(arg0->unk20);
 }
