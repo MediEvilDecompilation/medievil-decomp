@@ -53,4 +53,12 @@ extern s32* (*D_800EE030)();
 extern void (*D_800EE1BC)();
 extern void func_80048214();
 extern void func_800A3BE0();
+extern void func_800A42B4(s32);
+
+typedef struct {
+    s32 pad0[0x6];
+    s32 unk18;
+    s32 pad1C;
+    s32 unk20;
+} struct000;
 
