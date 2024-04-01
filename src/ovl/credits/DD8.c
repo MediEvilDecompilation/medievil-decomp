@@ -55,7 +55,7 @@ bool func_80012234(void) {
 }
 
 bool func_8001225C(void) {
-    (s32) D_800122A0->unk10C = (s32) (D_800122A0->unk80->unk4);
-    (s32) D_800122A0->unk84 = (s32) (D_800122A0->unk84 + 8);
+    (s32) D_800122A0->unk10C = (s32)(D_800122A0->unk80->unk4);
+    (s32) D_800122A0->unk84 = (s32)(D_800122A0->unk84 + 8);
     return true;
 }
