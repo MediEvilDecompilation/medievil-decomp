@@ -2,16 +2,16 @@
 #define CREDITS_H
 #include "game.h"
 
-typedef struct SmallCreditStruct {
-    char pad_0[0x4];
-    s32 unk4;
+typedef struct CreditsStruct_unk80 {
+    /* 0x00 */ char pad_0[0x4];
+    /* 0x04 */ s32 unk4;
 
-} SmallCreditStruct;
+} CreditsStruct_unk80;
 
 typedef struct CreditsStruct {
     /* 0x00 */ char pad_0[0x7C];
     /* 0x7C */ s32 unk7C;
-    /* 0x80 */ SmallCreditStruct* unk80;
+    /* 0x80 */ CreditsStruct_unk80* unk80;
     /* 0x84 */ s32 unk84;
     /* 0x88 */ s32 unk88;
     /* 0x8C */ s16 unk8C;
