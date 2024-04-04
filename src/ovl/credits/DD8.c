@@ -54,4 +54,8 @@ bool func_80012234(void) {
     return true;
 }
 
-INCLUDE_ASM("asm/ovl/credits/nonmatchings/DD8", func_8001225C);
+bool func_8001225C(void) {
+    (s32) D_800122A0->unk10C = (s32)(D_800122A0->unk80->unk4);
+    (s32) D_800122A0->unk84 = (s32)(D_800122A0->unk84 + 8);
+    return true;
+}
