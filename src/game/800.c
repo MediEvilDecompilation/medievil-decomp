@@ -2907,7 +2907,7 @@ u16 func_800A92E4(void) {
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92F4);
 #else
 u32 func_800A92F4(u16 arg0) {
-    u32 temp_v0 = (u16) (*D_800EB30C);
+    u32 temp_v0 = (u16)(*D_800EB30C);
     *D_800EB30C = arg0;
     return temp_v0;
 }
