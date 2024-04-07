@@ -2902,7 +2902,7 @@ u16 func_800A92E4(void) {
 /**
  * Matches with 2.8.1 on decomp.me with standard instructions -- does not match in the repo currently
  * https://decomp.me/scratch/6vneo
-*/
+ */
 #ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92F4);
 #else
