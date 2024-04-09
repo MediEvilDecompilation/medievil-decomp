@@ -46,7 +46,8 @@ segments:
     vram: 0x801B0000
     bss_size: 0x0
     subsegments:
-      - [0x800, rodata, 800]
-      - [0x64D0, c, 64D0]
-      - [0x10750, data]
+      - [0x800, c, 800]
+      - [0x22C0, textbin, psyq]
+      - [0x10750, rodata]
+      - [0x11258, data]
   - [0x21000]
