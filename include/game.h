@@ -74,3 +74,9 @@ typedef struct {
     /* 0x2C */ s32 unk2C;
 } unkStruct_800A4B5C;
 
+typedef struct {
+    /* 0x00 */ char pad_0[0x6A];
+    /* 0x6A */ s16 unk6A;
+    /* 0x6C */ s16 unk6C;
+    /* 0x6E */ s16 unk6E;
+} unkStruct_800A0748;
