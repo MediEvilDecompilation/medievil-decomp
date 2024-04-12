@@ -27,7 +27,7 @@ INCLUDE_ASM("asm/main/nonmatchings/800", func_801B1094);
 INCLUDE_ASM("asm/main/nonmatchings/800", func_801B1144);
 
 u32 func_801B1298(s32 arg0) {
-    return (u32)(arg0 * 3)/2;
+    return (u32)(arg0 * 3) / 2;
 }
 
 INCLUDE_ASM("asm/main/nonmatchings/800", func_801B12A8);
