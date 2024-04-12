@@ -63,3 +63,14 @@ typedef struct {
     /* 0x20 */ s32 unk20;
 } unkStruct_8003C3F4;
 
+typedef struct {
+    /* 0x00 */ char pad_0[0x2];
+    /* 0x02 */ u16 unk2;
+    /* 0x04 */ char pad_4[0x6];
+    /* 0x0A */ u16 unkA;
+    /* 0x0C */ char pad_C[0xE];
+    /* 0x1A */ u16 unk1A;
+    /* 0x1C */ char pad_1C[0x10];
+    /* 0x2C */ s32 unk2C;
+} unkStruct_800A4B5C;
+
