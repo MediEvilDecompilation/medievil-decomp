@@ -2348,8 +2348,8 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_80097620);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80097A9C);
 
-s32 func_80097E28(void) {
-    return 0;
+boolean func_80097E28(void) {
+    return false;
 }
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80097E30);
