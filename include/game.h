@@ -107,3 +107,8 @@ typedef struct unkStruct_8008E45C {
 /* 0x10 */ char pad_10[0x9];
 /* 0x19 */ u8 unk19;
 } unkStruct_8008E45C;
+
+typedef struct {
+    /* 0x00 */ char pad_0[0x8E];
+    /* 0x8E */ s16 unk8E;
+} unkStruct_800A519C;
