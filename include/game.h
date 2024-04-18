@@ -93,3 +93,10 @@ typedef struct {
     /* 0x00 */ s32* unk0;
     /* 0x04 */ s32 unk4;
 } unkStruct_80061D70;
+
+typedef struct {
+    /* 0x00 */ char pad_0[0x120];
+    /* 0x120 */ s8 unk120;
+    /* 0x121 */ s8 unk121;
+    /* 0x122 */ s8 unk122;
+} unkStruct_800A0724;
