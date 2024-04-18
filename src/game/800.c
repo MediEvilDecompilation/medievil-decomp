@@ -2160,7 +2160,9 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8008D5B8);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8008DE58);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_8008E45C);
+void func_8008E45C(unkStruct_8008E45C* arg0) {
+    arg0->unkE = arg0->unk19;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8008E468);
 

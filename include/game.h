@@ -100,3 +100,10 @@ typedef struct {
     /* 0x121 */ s8 unk121;
     /* 0x122 */ s8 unk122;
 } unkStruct_800A0724;
+
+typedef struct unkStruct_8008E45C {
+/* 0x00 */ char pad_0[0xE];
+/* 0x0E */ s16 unkE;
+/* 0x10 */ char pad_10[0x9];
+/* 0x19 */ u8 unk19;
+} unkStruct_8008E45C;
