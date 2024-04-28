@@ -31,5 +31,8 @@ extern void func_8004847C(void*, void*);
 extern s32 func_80058344(s32);
 extern void DestroyFragments(s32);
 extern void func_8006820C(s32, s32);
+extern void func_80047210();
+extern void func_80048548(s32, s32);
+extern u16* D_800EDB28;
 
 #endif

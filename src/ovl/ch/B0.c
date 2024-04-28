@@ -164,7 +164,12 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800132AC);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80013330);
 
-INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800133A0);
+void func_800133A0(void) {
+    if (*D_800EDB28 == 1) {
+        func_80048548(0xDE, 0);
+    }
+    func_80047210();
+}
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800133E0);
 

@@ -122,6 +122,6 @@ typedef struct {
 } unkStruct_8009CE8C;
 
 typedef struct {
-               s16 unk0;
-               s16 unk2;
+    /* 0x00 */ s16 unk0;
+    /* 0x02 */ s16 unk2;
 } unkStruct_8009CE8C_2;
