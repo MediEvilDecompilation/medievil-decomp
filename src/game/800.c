@@ -1944,7 +1944,16 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_80080B8C);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80080C00);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80080E0C);
+void func_80080E0C(unkStruct_80080E0C* arg0) {
+    s32 temp_a0;
+
+    temp_a0 = arg0->unk1C0;
+    if (temp_a0 != 0) {
+        func_8008D56C(temp_a0);
+        func_800A42B4(arg0->unk1C0);
+        arg0->unk1C0 = 0;
+    }
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80080E54);
 
