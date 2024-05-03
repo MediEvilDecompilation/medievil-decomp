@@ -59,6 +59,7 @@ extern void func_800A0CB4();
 extern void func_800B3430();
 extern s32 D_800EDBF8;
 extern s32 D_800EE0B4;
+extern s32 D_800F17B8;
 extern s32 func_8009D484(s16, s16);
 extern s32 func_800A403C(s32, s32);
 extern void func_8008D56C(s32);
