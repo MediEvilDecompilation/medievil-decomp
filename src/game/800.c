@@ -2848,8 +2848,8 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6458);
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A648C);
 
 bool func_800A64C4(unkStruct_800A64C4* arg0) {
-    arg0->unkC = (u16) (arg0->unkC | 0x200);
-    arg0->unk1C = (u16) (arg0->unk1C + 1);
+    arg0->unkC = (u16)(arg0->unkC | 0x200);
+    arg0->unk1C = (u16)(arg0->unk1C + 1);
     return true;
 }
 
