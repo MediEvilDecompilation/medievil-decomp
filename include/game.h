@@ -134,3 +134,10 @@ typedef struct {
     /* 0x00 */ char pad_0[0x1C0];
     /* 0x1C0 */s32 unk1C0;
 } unkStruct_80080E0C;
+
+typedef struct{
+    /* 0x00 */ char pad_0[0x0C];
+    /* 0x0C */ s16 unkC;
+    /* 0x0E */ char pad_E[0x0E];
+    /* 0x1C */ s16 unk1C;
+} unkStruct_800A64C4;
