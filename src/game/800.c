@@ -2866,7 +2866,17 @@ s32 func_800A6594(s16* arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800A65A4);
+bool func_800A65A4(unkStruct_800A65A4* arg0) {
+    unkStruct_800A65A4* temp_v1;
+
+    if (arg0->unkC & 0x20) {
+        func_800A519C();
+    } else {
+        temp_v1 = arg0->unk28;
+        temp_v1->unkA = (u16)(temp_v1->unkA | 0x100);
+    }
+    return false;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A65F8);
 
