@@ -152,3 +152,11 @@ typedef struct{
     /* 0x0E */ char pad_E[0x1A];
     /* 0x28 */ s32 unk28;
 } unkStruct_800A65A4;
+
+typedef struct{
+    /* 0x00 */ s16 unk0;
+    /* 0x02 */ s16 unk2;
+    /* 0x04 */ s16 unk4;
+    /* 0x06 */ s16 unk6;
+    /* 0x08 */ s32 unk8;
+}unkStruct_80068788;
