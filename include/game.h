@@ -160,3 +160,8 @@ typedef struct{
     /* 0x06 */ s16 unk6;
     /* 0x08 */ s32 unk8;
 }unkStruct_80068788;
+
+typedef struct{
+    /* 0x00 */ char pad_0[0x28];
+    /* 0x28 */ s32 unk28;
+} unkStruct_80058688;

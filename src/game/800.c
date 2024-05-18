@@ -976,7 +976,10 @@ INCLUDE_ASM("asm/game/nonmatchings/800", DestroyFragments);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80058614);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80058688);
+void func_80058688(unkStruct_80058688* arg0) {
+    func_800A42B4(arg0->unk28);
+    func_800A42B4(arg0);
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800586BC);
 
