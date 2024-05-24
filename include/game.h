@@ -165,3 +165,8 @@ typedef struct{
     /* 0x00 */ char pad_0[0x28];
     /* 0x28 */ s32 unk28;
 } unkStruct_80058688;
+
+typedef struct unkStruct_800A2BEC {
+/* 0x00*/ char pad_0[0x8];
+/* 0x08*/ u16 unk8;
+} unkStruct_800A2BEC;
