@@ -66,6 +66,8 @@ extern void func_8008D56C(s32);
 extern void func_800A519C();
 extern void func_8006CF74(s32, s32);
 extern void func_8006DA8C(s32);
+extern void func_80062204(s32, u32);
+extern u8 D_800EEE48;
 
 typedef struct {
     /* 0x00 */ char pad_0[0x18];
@@ -160,3 +162,13 @@ typedef struct{
     /* 0x06 */ s16 unk6;
     /* 0x08 */ s32 unk8;
 }unkStruct_80068788;
+
+typedef struct{
+    /* 0x00 */ char pad_0[0x28];
+    /* 0x28 */ s32 unk28;
+} unkStruct_80058688;
+
+typedef struct unkStruct_800A2BEC {
+/* 0x00*/ char pad_0[0x8];
+/* 0x08*/ u16 unk8;
+} unkStruct_800A2BEC;

@@ -976,7 +976,10 @@ INCLUDE_ASM("asm/game/nonmatchings/800", DestroyFragments);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80058614);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_80058688);
+void func_80058688(unkStruct_80058688* arg0) {
+    func_800A42B4(arg0->unk28);
+    func_800A42B4(arg0);
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800586BC);
 
@@ -1551,7 +1554,9 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8006EE44);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8006EEB4);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_8006EF44);
+void func_8006EF44(s32 arg0) {
+    func_80062204(arg0 + 0x18, (u8)D_800EEE48 >> 7);
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8006EF70);
 
@@ -2722,7 +2727,10 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A2A84);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A2BD4);
 
-INCLUDE_ASM("asm/game/nonmatchings/800", func_800A2BEC);
+u16 func_800A2BEC(unkStruct_800A2BEC* arg0, u16 arg1) {
+    arg0->unk8 &= ~arg1;
+    return arg0->unk8;
+}
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A2C04);
 
