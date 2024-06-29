@@ -121,7 +121,15 @@ INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_800147E0);
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_8001494C);
 
-INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80014C80);
+typedef struct UnkStruct {
+    /* 0x00 */ char pad_0[0x0A];
+    /* 0x0A */ u16 unkA;
+} UnkStruct; 
+extern UnkStruct* D_8001CB68;
+
+void func_80014C80(void) {
+    D_8001CB68->unkA = (u16) (D_8001CB68->unkA | 0x100);
+}
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80014CA0);
 
@@ -193,9 +201,13 @@ INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_800178B0);
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017AA4);
 
-INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017C68);
+void func_80017C68(void) {
+    func_80017064();
+}
 
-INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017C88);
+void func_80017C88(void) {
+    func_80017064();
+}
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017CA8);
 
@@ -205,7 +217,9 @@ INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017E1C);
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017E94);
 
-INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017F14);
+bool func_80017F14(void) {
+    return false;
+};
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80017F1C);
 
