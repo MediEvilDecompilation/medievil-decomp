@@ -1,4 +1,5 @@
 #include "common.h"
+#include "ant_caves.h"
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80010138);
 
@@ -120,12 +121,6 @@ INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80014690);
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_800147E0);
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_8001494C);
-
-typedef struct UnkStruct {
-    /* 0x00 */ char pad_0[0x0A];
-    /* 0x0A */ u16 unkA;
-} UnkStruct; 
-extern UnkStruct* D_8001CB68;
 
 void func_80014C80(void) {
     D_8001CB68->unkA = (u16) (D_8001CB68->unkA | 0x100);
