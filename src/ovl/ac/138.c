@@ -123,7 +123,7 @@ INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_800147E0);
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_8001494C);
 
 void func_80014C80(void) {
-    D_8001CB68->unkA = (u16) (D_8001CB68->unkA | 0x100);
+    D_8001CB68->unkA = (u16)(D_8001CB68->unkA | 0x100);
 }
 
 INCLUDE_ASM("asm/ovl/ac/nonmatchings/138", func_80014CA0);
