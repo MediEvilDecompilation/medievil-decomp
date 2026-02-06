@@ -1,44 +1,43 @@
 #ifndef INCLUDE_ASM_H
 #define INCLUDE_ASM_H
 
-#define STRINGIFY_(x) #x
-#define STRINGIFY(x) STRINGIFY_(x)
-
-#ifndef PERMUTER
+#if !defined(M2CTX) && !defined(PERMUTER)
 
 #ifndef INCLUDE_ASM
+#define INCLUDE_ASM(FOLDER, NAME) \
+    __asm__( \
+        ".section .text\n" \
+        "    .set noat\n" \
+        "    .set noreorder\n" \
+        "    .include \"" FOLDER "/" #NAME ".s\"\n" \
+        "    .set reorder\n" \
+        "    .set at\n" \
+    )
+#endif
+#ifndef INCLUDE_RODATA
+#define INCLUDE_RODATA(FOLDER, NAME) \
+    __asm__( \
+        ".section .rodata\n" \
+        "    .include \"" FOLDER "/" #NAME ".s\"\n" \
+        ".section .text" \
+    )
+#endif
 
-#ifdef INCLUDE_ASM_NEW
-#define INCLUDE_ASM(FOLDER, NAME)                                   \
-    __asm__(".section .text\n"                                      \
-            "\t.align\t2\n"                                         \
-            "\t.globl\t" #NAME "\n"                                 \
-            "\t.ent\t" #NAME "\n" #NAME ":\n"                       \
-            ".include \"asm/" VERSION "/" FOLDER "/" #NAME ".s\"\n" \
-            "\t.set reorder\n"                                      \
-            "\t.set at\n"                                           \
-            "\t.end\t" #NAME)
+#if INCLUDE_ASM_USE_MACRO_INC
+__asm__(".include \"include/macro.inc\"\n");
 #else
-#define INCLUDE_ASM(FOLDER, NAME)                   \
-    __asm__(".section .text\n"                      \
-            "\t.align\t2\n"                         \
-            "\t.globl\t" #NAME "\n"                 \
-            "\t.ent\t" #NAME "\n" #NAME ":\n"       \
-            ".include \"" FOLDER "/" #NAME ".s\"\n" \
-            "\t.set reorder\n"                      \
-            "\t.set at\n"                           \
-            "\t.end\t" #NAME);
-#endif
-
-#endif
-
-// omit .global
-#ifdef USE_INCLUDE_ASM
-__asm__(".include \"macro.inc\"\n");
+__asm__(".include \"include/labels.inc\"\n");
 #endif
 
 #else
+
+#ifndef INCLUDE_ASM
 #define INCLUDE_ASM(FOLDER, NAME)
 #endif
-
+#ifndef INCLUDE_RODATA
+#define INCLUDE_RODATA(FOLDER, NAME)
 #endif
+
+#endif /* !defined(M2CTX) && !defined(PERMUTER) */
+
+#endif /* INCLUDE_ASM_H */
