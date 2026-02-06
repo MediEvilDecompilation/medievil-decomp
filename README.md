@@ -20,6 +20,12 @@ The full guide for the decompilation process can be found here: https://github.c
 ## Progress
 TBA frogress goes here?
 
+## FrogLord
+![FrogLord](https://raw.githubusercontent.com/Kneesnap/FrogLord/refs/heads/master/resources/graphics/logo-large.png)
+
+Checkout  [FrogLord](https://github.com/Kneesnap/FrogLord) for a visual editor for MediEvil, MediEvil II, Frogger, and several other games!
+
+
 ## Useful Links
 To see a set of useful links which can help you in the decompilation process click here: https://github.com/MediEvilDecompilation/medievil-decomp/wiki/Useful-Links
 
