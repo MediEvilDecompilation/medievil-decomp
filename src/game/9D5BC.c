@@ -138,6 +138,8 @@ INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C2C78);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C2CC8);
 
+INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C2CD8);
+
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C2D08);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C2F18);
@@ -153,6 +155,10 @@ INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C33B8);
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C36B8);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3708);
+
+INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3718);
+
+INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3728);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3748);
 
@@ -174,11 +180,15 @@ INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3E44);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3E88);
 
+INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3EB0);
+
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3F44);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3FB4);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3FE8);
+
+INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C3FF8);
 
 INCLUDE_ASM("asm/game/nonmatchings/9D5BC", func_800C4058);
 

@@ -18,10 +18,8 @@ options:
   use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
   asm_jtbl_label_macro: jlabel
-  section_order:
-    - ".rodata"
-    - ".text"
-    - ".data"
+  
+  section_order: [".rodata", ".text", ".data", ".bss"]
 
   subalign: 2
 

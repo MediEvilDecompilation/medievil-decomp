@@ -8,26 +8,7 @@ INCLUDE_ASM("asm/game/nonmatchings/8B3FC", func_800AD07C);
 
 INCLUDE_ASM("asm/game/nonmatchings/8B3FC", func_800AD344);
 
-// Matches without -msplit-addresses
-#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/8B3FC", func_800AD750);
-#else
-extern s8* D_800EB6B0;
-extern u8* D_800EB6B4;
-extern u8* D_800EB6B8;
-extern u8* D_800EB6BC;
-
-bool func_800AD750(s8* arg0) {
-    *D_800EB6B0 = 2;
-    *D_800EB6B8 = arg0[0];
-    *D_800EB6BC = arg0[1];
-    *D_800EB6B0 = 3;
-    *D_800EB6B4 = arg0[2];
-    *D_800EB6B8 = arg0[3];
-    *D_800EB6BC = 32;
-    return false;
-}
-#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/8B3FC", func_800AD7D8);
 
