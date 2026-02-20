@@ -74,7 +74,7 @@ M2C             := $(PYTHON) $(M2C_APP)
 M2C_ARGS        := -P 4
 MASPSX_DIR      := $(TOOLS_DIR)/maspsx
 MASPSX_APP      := $(MASPSX_DIR)/maspsx.py
-MASPSX          := $(PYTHON) $(MASPSX_APP) --no-macro-inc --expand-div
+MASPSX          := $(PYTHON) $(MASPSX_APP) --expand-div
 
 
 # List source files (strip so newlines in define don't end up in target names)
