@@ -2,34 +2,34 @@
 .SECONDARY:
 
 # Binaries
-MAIN			:= main
-GAME			:= game
-OVL_AC			:= ac # The Ant Caves
-OVL_AG			:= ag # The Asylum Grounds
-OVL_CC			:= cc # The Crystal Caves
-OVL_CH			:= ch # Cemetery Hill
-OVL_CR			:= cr # Dan's Crypt
-OVL_CREDITS		:= credits # Credits
-OVL_DC			:= dc # Desecrated Church (The Hilltop Mausoleum)
-OVL_EE			:= ee # The Enchanted Earth
-OVL_EH			:= eh # The Entrance Hall
-OVL_GG			:= gg # The Gallows Gauntlet
-OVL_GS			:= gs # The Ghost Ship
-OVL_GY1			:= gy1 # The Graveyard
-OVL_GY2			:= gy2 # Return to the Graveyard
-OVL_HH			:= hh # Hall of Heroes
-OVL_HR 			:= hr # The Haunted Ruins
-OVL_IA			:= ia # Inside the Asylum
-OLV_LA			:= la # The Lake
-OVL_LANDMAP		:= landmap # The Map of Gallowmere
-OVL_PD			:= pd # Pools of the Ancient Dead
-OVL_PG			:= pg # Pumpkin Gorge
-OVL_PS			:= ps # The Pumpkin Serpent
-OVL_SF			:= sf # Scarecrow Fields
-OVL_SV			:= sv # The Sleeping Village
-OVL_TD			:= td # The Time Device
-OVL_TL			:= tl # Title Level
-OVL_ZL			:= zl # Zarok's Lair
+MAIN            := main
+GAME            := game
+OVL_AC            := ac # The Ant Caves
+OVL_AG            := ag # The Asylum Grounds
+OVL_CC            := cc # The Crystal Caves
+OVL_CH            := ch # Cemetery Hill
+OVL_CR            := cr # Dan's Crypt
+OVL_CREDITS        := credits # Credits
+OVL_DC            := dc # Desecrated Church (The Hilltop Mausoleum)
+OVL_EE            := ee # The Enchanted Earth
+OVL_EH            := eh # The Entrance Hall
+OVL_GG            := gg # The Gallows Gauntlet
+OVL_GS            := gs # The Ghost Ship
+OVL_GY1            := gy1 # The Graveyard
+OVL_GY2            := gy2 # Return to the Graveyard
+OVL_HH            := hh # Hall of Heroes
+OVL_HR             := hr # The Haunted Ruins
+OVL_IA            := ia # Inside the Asylum
+OLV_LA            := la # The Lake
+OVL_LANDMAP        := landmap # The Map of Gallowmere
+OVL_PD            := pd # Pools of the Ancient Dead
+OVL_PG            := pg # Pumpkin Gorge
+OVL_PS            := ps # The Pumpkin Serpent
+OVL_SF            := sf # Scarecrow Fields
+OVL_SV            := sv # The Sleeping Village
+OVL_TD            := td # The Time Device
+OVL_TL            := tl # Title Level
+OVL_ZL            := zl # Zarok's Lair
 
 # Compiler
 CC1PSX          := ./bin/cc1-2.8.1
@@ -40,11 +40,11 @@ LD              := $(CROSS)ld
 CPP             := $(CROSS)cpp
 OBJCOPY         := $(CROSS)objcopy
 AS_FLAGS        += -Iinclude -march=r3000 -mtune=r3000 -no-pad-sections -O1 -G0
-PSXCC_FLAGS		:= -quiet -mcpu=3000 -fgnu-linker -mgas -gcoff
+PSXCC_FLAGS        := -quiet -mcpu=3000 -fgnu-linker -mgas -gcoff
 CC_FLAGS        += -msplit-addresses -O2 -G0 -funsigned-char -w -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fverbose-asm -msoft-float -g
 CPP_FLAGS       += -Iinclude -undef -Wall -fno-builtin
 CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D_LANGUAGE_C -DLANGUAGE_C -DHACKS -DUSE_INCLUDE_ASM
-LD_FLAGS		:= -nostdlib --no-check-sections
+LD_FLAGS        := -nostdlib --no-check-sections
 
 # Directories
 ASM_DIR         := asm
@@ -60,7 +60,12 @@ MAKE			:= make
 PYTHON          := python3
 SPLAT_DIR       := $(TOOLS_DIR)/splat
 SPLAT_APP       := $(SPLAT_DIR)/split.py
-SPLAT           := $(PYTHON) $(SPLAT_APP)
+# Use local submodule if present, else pip-installed splat64 (python -m splat.scripts.split split)
+ifneq ($(wildcard $(SPLAT_APP)),)
+  SPLAT         := $(PYTHON) $(SPLAT_APP)
+else
+  SPLAT         := $(PYTHON) -m splat.scripts.split split
+endif
 ASMDIFFER_DIR   := $(TOOLS_DIR)/asm-differ
 ASMDIFFER_APP   := $(ASMDIFFER_DIR)/diff.py
 M2C_DIR         := $(TOOLS_DIR)/m2c
@@ -72,11 +77,11 @@ MASPSX_APP      := $(MASPSX_DIR)/maspsx.py
 MASPSX          := $(PYTHON) $(MASPSX_APP) --no-macro-inc --expand-div
 
 
-# List source files
+# List source files (strip so newlines in define don't end up in target names)
 define list_src_files
-	$(foreach dir,$(ASM_DIR)/$(1),$(wildcard $(dir)/**.s))
-	$(foreach dir,$(ASM_DIR)/$(1)/data,$(wildcard $(dir)/**.s))
-	$(foreach dir,$(SRC_DIR)/$(1),$(wildcard $(dir)/**.c))
+	$(strip $(foreach dir,$(ASM_DIR)/$(1),$(wildcard $(dir)/**.s)) \
+		$(foreach dir,$(ASM_DIR)/$(1)/data,$(wildcard $(dir)/**.s)) \
+		$(foreach dir,$(SRC_DIR)/$(1),$(wildcard $(dir)/**.c)))
 endef
 
 # List object files
@@ -85,6 +90,7 @@ define list_o_files
 endef
 
 # Linking
+# undefined_syms.$(1).txt: per-target manual undefined symbols (e.g. undefined_syms.ovlag.txt for overlay ag)
 define link
 	$(LD) $(LD_FLAGS) -o $(2) \
 		-Map $(BUILD_DIR)/$(1).map \
@@ -92,6 +98,7 @@ define link
 		-T $(CONFIG_DIR)/symbols.txt \
 		-T $(CONFIG_DIR)/symbols.game.txt \
 		-T $(CONFIG_DIR)/undefined_syms.txt \
+		$(if $(wildcard $(CONFIG_DIR)/undefined_syms.$(1).txt),-T $(CONFIG_DIR)/undefined_syms.$(1).txt) \
 		-T $(CONFIG_DIR)/undefined_syms_auto.$(1).txt \
 		-T $(CONFIG_DIR)/undefined_funcs_auto.$(1).txt
 endef
@@ -103,7 +110,7 @@ build: main game overlays
 
 init:
 	$(MAKE) clean
-	$(MAKE) extract -j $(nproc)
+	$(MAKE) extract -j $(NPROC)
 	$(MAKE) all
 
 ### Game Executables ###
@@ -121,8 +128,11 @@ $(BUILD_DIR)/MEDIEVIL.EXE: $(BUILD_DIR)/$(GAME).elf
 $(BUILD_DIR)/$(GAME).elf: $(call list_o_files,game)
 	$(call link,game,$@)
 
-%_dirs:
-	$(foreach dir,$(ASM_DIR)/$* $(ASM_DIR)/$*/data $(SRC_DIR)/$* $(ASSETS_DIR)/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+# Explicit _dirs for main/game; ovl%_dirs (below) handles overlays (ovl/ac, ovl/ag, ...)
+main_dirs:
+	$(PYTHON) $(TOOLS_DIR)/make_dirs.py main
+game_dirs:
+	$(PYTHON) $(TOOLS_DIR)/make_dirs.py game
 
 ### Overlays ###
 overlays: ac ag cc ch cr credits dc ee eh gg gs gy1 gy2 hh hr ia la landmap pd pg ps sf sv td tl zl
@@ -232,7 +242,7 @@ $(BUILD_DIR)/ZL.BIN: $(BUILD_DIR)/ovlzl.elf
 	$(OBJCOPY) -O binary $< $@
 
 ovl%_dirs:
-	$(foreach dir,$(ASM_DIR)/ovl/$* $(ASM_DIR)/ovl/$*/data $(SRC_DIR)/ovl/$* $(ASSETS_DIR)/ovl/$*,$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+	$(PYTHON) $(TOOLS_DIR)/make_dirs.py ovl/$*
 
 $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 	$(call link,ovl$*,$@)
@@ -241,20 +251,36 @@ $(BUILD_DIR)/ovl%.elf: $$(call list_o_files,ovl/$$*)
 # Assembly
 $(BUILD_DIR)/%.s.o: %.s
 	$(AS) $(AS_FLAGS) -o $@ $<
+# Windows: make may use backslashes for targets; pattern and recipe must handle them
+ifeq ($(OS),Windows_NT)
+$(BUILD_DIR)\%.s.o: %.s
+	$(AS) $(AS_FLAGS) -o $(subst \,/,$@) $(subst \,/,$<)
+$(BUILD_DIR)\%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
+	$(CPP) $(CPP_FLAGS) -lang-c $(subst \,/,$<) | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(MASPSX) | $(AS) $(AS_FLAGS) -o $(subst \,/,$@)
+endif
 $(BUILD_DIR)/%.c.o: %.c $(MASPSX_APP) $(CC1PSX)
 	$(CPP) $(CPP_FLAGS) -lang-c $< | $(CC) $(CC_FLAGS) $(PSXCC_FLAGS)  | $(MASPSX) | $(AS) $(AS_FLAGS) -o $@
 
 
 # Checksum
 check:
+ifeq ($(OS),Windows_NT)
+	@$(PYTHON) $(TOOLS_DIR)/check_sha1.py config/medievil.check.sha
+else
 	@sha1sum --check config/medievil.check.sha
+endif
 
 
 # asm-differ expected object files
 expected: check
-	mkdir -p expected/build
+ifeq ($(OS),Windows_NT)
+	@if exist expected\build rd /s /q expected\build
+	@xcopy /e /i /q build expected\build
+else
+	$(MKDIR) expected/build
 	rm -rf expected/build/
 	cp -r build/ expected/build/
+endif
 
 
 # Assembly extraction
@@ -262,18 +288,150 @@ extract: extract_main extract_game extract_ovlac extract_ovlag extract_ovlcc ext
 
 ## Main
 extract_main:
-	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.main.txt > $(CONFIG_DIR)/generated.symbols.main.txt
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.main.txt,$(CONFIG_DIR)/generated.symbols.main.txt)
 	$(SPLAT) $(CONFIG_DIR)/splat.main.yaml
 
 ## Game
 extract_game:
-	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.game.txt > $(CONFIG_DIR)/generated.symbols.game.txt
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.game.txt,$(CONFIG_DIR)/generated.symbols.game.txt)
 	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
 
 ## Overlays
 extract_ovl%:
-	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.ovl$*.txt > $(CONFIG_DIR)/generated.symbols.ovl$*.txt
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovl$*.txt,$(CONFIG_DIR)/generated.symbols.ovl$*.txt)
 	$(SPLAT) $(CONFIG_DIR)/splat.ovl$*.yaml
+
+# ovlag references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlag:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlag.txt,$(CONFIG_DIR)/generated.symbols.ovlag.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlag.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlag.txt $(CONFIG_DIR)/undefined_syms.ovlag.txt
+
+# ovlcc references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlcc:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlcc.txt,$(CONFIG_DIR)/generated.symbols.ovlcc.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlcc.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlcc.txt $(CONFIG_DIR)/undefined_syms.ovlcc.txt
+
+# ovlch references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlch:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlch.txt,$(CONFIG_DIR)/generated.symbols.ovlch.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlch.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlch.txt $(CONFIG_DIR)/undefined_syms.ovlch.txt
+
+# ovlcredits references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlcredits:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlcredits.txt,$(CONFIG_DIR)/generated.symbols.ovlcredits.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlcredits.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlcredits.txt $(CONFIG_DIR)/undefined_syms.ovlcredits.txt
+
+# ovldc references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovldc:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovldc.txt,$(CONFIG_DIR)/generated.symbols.ovldc.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovldc.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovldc.txt $(CONFIG_DIR)/undefined_syms.ovldc.txt
+
+# ovlee references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlee:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlee.txt,$(CONFIG_DIR)/generated.symbols.ovlee.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlee.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlee.txt $(CONFIG_DIR)/undefined_syms.ovlee.txt
+
+# ovleh references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovleh:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovleh.txt,$(CONFIG_DIR)/generated.symbols.ovleh.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovleh.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovleh.txt $(CONFIG_DIR)/undefined_syms.ovleh.txt
+
+# ovlgg references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlgg:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlgg.txt,$(CONFIG_DIR)/generated.symbols.ovlgg.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlgg.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlgg.txt $(CONFIG_DIR)/undefined_syms.ovlgg.txt
+
+# ovlgs references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlgs:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlgs.txt,$(CONFIG_DIR)/generated.symbols.ovlgs.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlgs.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlgs.txt $(CONFIG_DIR)/undefined_syms.ovlgs.txt
+
+# ovlgy1 references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlgy1:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlgy1.txt,$(CONFIG_DIR)/generated.symbols.ovlgy1.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlgy1.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlgy1.txt $(CONFIG_DIR)/undefined_syms.ovlgy1.txt
+
+# ovlgy2 references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlgy2:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlgy2.txt,$(CONFIG_DIR)/generated.symbols.ovlgy2.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlgy2.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlgy2.txt $(CONFIG_DIR)/undefined_syms.ovlgy2.txt
+
+# ovlhh references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlhh:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlhh.txt,$(CONFIG_DIR)/generated.symbols.ovlhh.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlhh.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlhh.txt $(CONFIG_DIR)/undefined_syms.ovlhh.txt
+
+# ovlhr references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlhr:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlhr.txt,$(CONFIG_DIR)/generated.symbols.ovlhr.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlhr.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlhr.txt $(CONFIG_DIR)/undefined_syms.ovlhr.txt
+
+# ovlia references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlia:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlia.txt,$(CONFIG_DIR)/generated.symbols.ovlia.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlia.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlia.txt $(CONFIG_DIR)/undefined_syms.ovlia.txt
+
+# ovlla references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlla:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlla.txt,$(CONFIG_DIR)/generated.symbols.ovlla.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlla.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlla.txt $(CONFIG_DIR)/undefined_syms.ovlla.txt
+
+# ovllandmap references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovllandmap:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovllandmap.txt,$(CONFIG_DIR)/generated.symbols.ovllandmap.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovllandmap.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovllandmap.txt $(CONFIG_DIR)/undefined_syms.ovllandmap.txt
+
+# ovlpg references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlpg:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlpg.txt,$(CONFIG_DIR)/generated.symbols.ovlpg.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlpg.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlpg.txt $(CONFIG_DIR)/undefined_syms.ovlpg.txt
+
+# ovlps references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlps:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlps.txt,$(CONFIG_DIR)/generated.symbols.ovlps.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlps.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlps.txt $(CONFIG_DIR)/undefined_syms.ovlps.txt
+
+# ovlsf references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlsf:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlsf.txt,$(CONFIG_DIR)/generated.symbols.ovlsf.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlsf.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlsf.txt $(CONFIG_DIR)/undefined_syms.ovlsf.txt
+
+# ovltd references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovltd:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovltd.txt,$(CONFIG_DIR)/generated.symbols.ovltd.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovltd.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovltd.txt $(CONFIG_DIR)/undefined_syms.ovltd.txt
+
+# ovltl references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovltl:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovltl.txt,$(CONFIG_DIR)/generated.symbols.ovltl.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovltl.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovltl.txt $(CONFIG_DIR)/undefined_syms.ovltl.txt
+
+# ovlzl references main-segment .L labels in rodata; generate PROVIDE for linker
+extract_ovlzl:
+	$(call concat_to,$(CONFIG_DIR)/symbols.txt,$(CONFIG_DIR)/symbols.ovlzl.txt,$(CONFIG_DIR)/generated.symbols.ovlzl.txt)
+	$(SPLAT) $(CONFIG_DIR)/splat.ovlzl.yaml
+	$(PYTHON) $(TOOLS_DIR)/generate_undefined_syms.py $(CONFIG_DIR)/symbols.ovlzl.txt $(CONFIG_DIR)/undefined_syms.ovlzl.txt
 
 
 # Cleaning
@@ -285,10 +443,11 @@ clean:
 
 # Formatting
 format:
-	@./tools/format.py -j $(nproc)
+	@$(PYTHON) $(TOOLS_DIR)/format.py -j $(NPROC)
 
+# On Windows CMD, requires bash in PATH (e.g. Git for Windows)
 checkformat:
-	@./tools/check_format.sh -j $(nproc)
+	@bash $(TOOLS_DIR)/check_format.sh
 
 
 # Phony
