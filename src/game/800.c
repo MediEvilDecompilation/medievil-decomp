@@ -1,86 +1,34 @@
-#include "game.h"
+#include "common.h"
 
-s32 func_80021CA4(void) {
-    func_80099AFC();
-    func_80059CCC();
-    *(s32*)0x1F8000A0 = 0xF00DFACE;
-    *(s32*)0x1F8000B8 = 0xF00DFACE;
-    func_80059E58();
-    return 0;
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80021CA4);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80021CEC);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80022AE8);
 
-void func_80022B5C(void) {
-    u16 var_v1;
-
-    if (D_800EEE64 == 3) {
-        var_v1 = D_800EEE5E;
-    } else {
-        var_v1 = 0;
-    }
-    func_800234C4(&D_800EE020, D_800CDF5C[var_v1], 0x10);
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80022B5C);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80022BBC);
 
-void func_80023008(void) {
-    func_8002348C(&D_800EDFF8, 0, 0x28);
-    if (D_800EEE24 & 0x20) {
-        D_800F191C.unk4 = 0;
-        D_800F191C.unk5 = 0;
-    }
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80023008);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80023058);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800231C4);
 
-bool func_80023338(void) {
-    return !!func_8009B23C();
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80023338);
 
-bool func_80023358(void* arg0, s32 arg1) {
-    func_80099B84(arg1);
-    func_80099BC8(arg1);
-    return true;
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80023358);
 
-void func_8002338C(void* arg0, s32 arg1) {
-    func_80065F6C(arg1);
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_8002338C);
 
-void func_800233AC(void* arg0, s32 arg1) {
-    func_8005CEE0(arg1);
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800233AC);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800233CC);
 
-// Probably needs permuter for the IF condition
-#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002348C);
-#else
-void func_8002348C(s32* arg0, u8 arg1, s32 arg2) {
-    s32 temp_a1 = arg1;
 
-    while (arg2 != 0) {
-        *arg0 = (temp_a1 << 0x18) | (temp_a1 << 0x10) | (temp_a1 << 8) | temp_a1;
-        arg2 -= 4;
-        arg0++;
-    }
-}
-#endif
-
-void func_800234C4(s32* arg0, s32* arg1, s32 arg2) {
-    while (arg2 != 0) {
-        *arg0 = *arg1;
-        arg0++;
-        arg1++;
-        arg2 -= 4;
-    }
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800234C4);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800234EC);
 
@@ -90,19 +38,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8002364C);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002395C);
 
-void func_80023A30(void) {
-    func_800646B4();
-    func_8004EC8C();
-    func_8002D0A0();
-    func_80040B5C();
-    func_80065904();
-    func_80075A88();
-    func_8004D3D8();
-    func_8005E314();
-    func_80069BB8();
-    func_800716FC();
-    func_8009BF68();
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80023A30);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80023AA0);
 
@@ -120,29 +56,9 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800241E0);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800241F4);
 
-void func_80024674(void) {
-    s32 (**var_s0)();
-    s32 (*temp_v0)();
+INCLUDE_ASM("asm/game/nonmatchings/800", func_80024674);
 
-    var_s0 = &D_800EE030;
-    while (*var_s0 != NULL) {
-        temp_v0 = *var_s0;
-        var_s0++;
-        temp_v0();
-    }
-}
-
-void func_800246C0(void) {
-    void (**var_s0)();
-    void (*temp_v0)();
-
-    var_s0 = &D_800EE1BC;
-    while (*var_s0 != NULL) {
-        temp_v0 = *var_s0;
-        var_s0++;
-        temp_v0();
-    }
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800246C0);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8002470C);
 
@@ -506,10 +422,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_8003C2B0);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8003C344);
 
-void func_8003C3F4(unkStruct_8003C3F4* arg0) {
-    arg0->unk18 = 0;
-    func_800A42B4(arg0->unk20);
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_8003C3F4);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_8003C41C);
 
@@ -2354,9 +2267,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_80097E30);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800980C4);
 
-void func_800980F8(void) {
-    func_80048214();
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800980F8);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_80098118);
 
@@ -2751,9 +2662,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A519C);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A51A8);
 
-void func_800A5298(void) {
-    func_800A3BE0();
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800A5298);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A52B8);
 
@@ -2771,16 +2680,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6358);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6384);
 
-bool func_800A63B0(unkStruct_800A63B0* arg0) {
-    unkStruct_800A63B0* temp_v1 = arg0->unk18 + (arg0->unk1C * 4);
-
-    arg0->unk10 = temp_v1->unk6;
-    arg0->unk11 = temp_v1->unk5;
-    arg0->unk12 = temp_v1->unk4;
-    arg0->unk1C += 2;
-
-    return true;
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800A63B0);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A63F4);
 
@@ -2800,10 +2700,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6538);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6588);
 
-s32 func_800A6594(s16* arg0) {
-    *(arg0 + 0x10) = 0x7FFF;
-    return 0;
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800A6594);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A65A4);
 
@@ -2875,9 +2772,7 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8C80);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8DC0);
 
-void func_800A8E94(void) {
-    func_800A3BE0();
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8E94);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A8EB4);
 
@@ -2895,23 +2790,9 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A9280);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92B4);
 
-u16 func_800A92E4(void) {
-    return D_800EA27E;
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92E4);
 
-/**
- * Matches with 2.8.1 on decomp.me with standard instructions -- does not match in the repo currently
- * https://decomp.me/scratch/6vneo
- */
-#ifndef NON_MATCHING
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A92F4);
-#else
-u32 func_800A92F4(u16 arg0) {
-    u32 temp_v0 = (u16)(*D_800EB30C);
-    *D_800EB30C = arg0;
-    return temp_v0;
-}
-#endif
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A930C);
 
@@ -2923,17 +2804,4 @@ INCLUDE_ASM("asm/game/nonmatchings/800", func_800A96FC);
 
 INCLUDE_ASM("asm/game/nonmatchings/800", func_800A979C);
 
-void func_800A9814(s32* arg0, s32 arg1) {
-    s32 var_v0;
-    s32* var_a0;
-
-    var_a0 = arg0;
-    var_v0 = arg1 - 1;
-    if (arg1 != 0) {
-        do {
-            *var_a0 = 0;
-            var_v0 -= 1;
-            var_a0 += 1;
-        } while (var_v0 != -1);
-    }
-}
+INCLUDE_ASM("asm/game/nonmatchings/800", func_800A9814);

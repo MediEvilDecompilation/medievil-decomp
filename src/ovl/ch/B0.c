@@ -1,4 +1,4 @@
-#include "ch.h"
+#include "common.h"
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800100B0);
 
@@ -18,56 +18,17 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80010E50);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800110C0);
 
-void BoulderDestroy(void) {
-    Boulder* temp_s0 = (Boulder*)g_CurrentEntity->unk90;
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", BoulderDestroy);
 
-    if (temp_s0->unk40 != NULL) {
-        DestroyFragments(temp_s0->unk40);
-    }
-
-    func_8002BA9C(temp_s0->unk44);
-
-    if (temp_s0->unk3C != -1) {
-        func_8006820C(temp_s0->unk3C, 1);
-        temp_s0->unk3C = -1;
-    }
-}
-
-bool BoulderSmash(void) {
-    Boulder* boulder = (Boulder*)g_CurrentEntity->unk90;
-
-    if (func_80058344(boulder->unk40) == 0) {
-        func_8004847C(g_CurrentEntity, 3);
-    }
-    return false;
-}
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", BoulderSmash);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_800111EC);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011310);
 
-void GargoyleInit(void) {
-    Gargoyle* gargoyle = (Gargoyle*)g_CurrentEntity->unk90;
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", GargoyleInit);
 
-    func_80047FC8();
-    AddrCopy(g_CurrentEntity->unk74->unk8->unk14[0]->cv, D_80014F78);
-    func_80046D74(1, 1);
-    gargoyle->fragments = 0;
-    gargoyle->unk8 = -1;
-}
-
-void GargoyleDestroy(void) {
-    Gargoyle* gargoyle = (Gargoyle*)g_CurrentEntity->unk90;
-
-    if (gargoyle->fragments != 0) {
-        DestroyFragments(gargoyle->fragments);
-    }
-
-    if (gargoyle->unk8 != -1) {
-        func_8006820C(gargoyle->unk8, 1);
-        gargoyle->unk8 = -1;
-    }
-}
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", GargoyleDestroy);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011474);
 
@@ -77,34 +38,15 @@ INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011700);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011854);
 
-void ZarokInit(void) {
-    Zarok* temp_s0 = (Zarok*)g_CurrentEntity->unk90;
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", ZarokInit);
 
-    func_80047FC8();
-    func_80046D74(1, 1);
-    temp_s0->unk4 = func_80049B64(43660, 1);
-    temp_s0->unk8 = func_80049B64(43659, 1);
-    temp_s0->unk3C = 0;
-}
-
-void func_80011904(void) {
-    if (g_CurrentEntity->unk5C != 2) {
-        if (g_CurrentEntity->unk5C == 4) {
-            g_CurrentEntity->unk4C |= 0x8000;
-            func_8004847C(g_CurrentEntity, 3);
-        }
-    }
-}
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011904);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011950);
 
-bool func_80011A60(void) {
-    return false;
-}
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A60);
 
-bool func_80011A68(void) {
-    return false;
-}
+INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A68);
 
 INCLUDE_ASM("asm/ovl/ch/nonmatchings/B0", func_80011A70);
 
